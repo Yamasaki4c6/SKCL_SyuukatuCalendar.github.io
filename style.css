@@ -1,0 +1,183 @@
+/*
+  style.css：見た目（色・大きさ・並べ方）を決めるファイルです。
+  ・色は先頭の :root にまとめてあり、ダークモード用の色はその下にあります。
+  ・画面幅が 760px 以下（スマホ）のときは、タイムラインを隠してカード一覧を出します。
+  日程の更新でこのファイルを触る必要はありません。
+*/
+
+/* ---------- 色の定義（ライト） ---------- */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --text: #1c1f26;
+  --muted: #5d6474;
+  --border: #d9dde5;
+  --grid: #e3e6ec;
+  --today: #d4380d;
+  --accent: #e5484d;        /* 次の締切の強調色 */
+  --accent-soft: #fde8e8;
+  --warn: #b25e00;          /* 未確定の印 */
+  --warn-soft: #fff1dc;
+  --link: #1f5fbf;
+  --cat-intern: #2f6fde;    /* インターン */
+  --cat-main: #188a5b;      /* 本選考 */
+  --cat-event: #8a4fd6;     /* イベント */
+  --cat-circle: #c2620a;    /* サークル */
+  color-scheme: light;
+}
+
+/* ---------- 色の定義（ダーク：OSの設定に合わせる） ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161b;
+    --surface: #1d2027;
+    --surface-2: #262a33;
+    --text: #e8eaf0;
+    --muted: #a0a7b6;
+    --border: #353a45;
+    --grid: #2b2f39;
+    --today: #ff7a45;
+    --accent: #ff6369;
+    --accent-soft: #3d1f22;
+    --warn: #ffb44d;
+    --warn-soft: #3a2a12;
+    --link: #7fb0ff;
+    --cat-intern: #6b9cff;
+    --cat-main: #3fc28a;
+    --cat-event: #b48cff;
+    --cat-circle: #f0a050;
+    color-scheme: dark;
+  }
+}
+/* ---------- 色の定義（ダーク：ボタンで選んだとき） ---------- */
+:root[data-theme="dark"] {
+  --bg: #14161b;
+  --surface: #1d2027;
+  --surface-2: #262a33;
+  --text: #e8eaf0;
+  --muted: #a0a7b6;
+  --border: #353a45;
+  --grid: #2b2f39;
+  --today: #ff7a45;
+  --accent: #ff6369;
+  --accent-soft: #3d1f22;
+  --warn: #ffb44d;
+  --warn-soft: #3a2a12;
+  --link: #7fb0ff;
+  --cat-intern: #6b9cff;
+  --cat-main: #3fc28a;
+  --cat-event: #b48cff;
+  --cat-circle: #f0a050;
+  color-scheme: dark;
+}
+
+/* ---------- 全体 ---------- */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+a { color: var(--link); }
+h2 { font-size: 1.05rem; margin: 0 0 .6rem; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* ---------- ヘッダー ---------- */
+.site-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 0; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.site-header h1 { font-size: 1.3rem; margin: 0; }
+.sub { margin: 0; color: var(--muted); font-size: .9rem; }
+.header-side { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.next-box {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  background: var(--accent-soft); border: 1px solid var(--accent);
+  border-radius: 10px; padding: 6px 12px;
+}
+.next-label { font-size: .85rem; color: var(--muted); }
+.next-days { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.next-what { font-size: .9rem; }
+.theme-btn, .range-nav button {
+  font: inherit; font-size: .85rem; color: var(--text);
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 10px; cursor: pointer;
+}
+.theme-btn:hover, .range-nav button:hover { border-color: var(--muted); }
+
+/* ---------- 絞り込み ---------- */
+.filters {
+  display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 16px; margin: 16px 0 12px;
+}
+.filter-group { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.filter-group legend, .filter-title { font-size: .8rem; color: var(--muted); padding: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; cursor: pointer; background: var(--surface-2); font-size: .9rem; }
+.chip input { margin: 0; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+select { font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; }
+.toggles { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; }
+.toggles label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+
+/* ---------- 表示期間 ---------- */
+.range-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.range-label { font-weight: 700; margin-right: auto; }
+
+.message { background: var(--warn-soft); border: 1px solid var(--warn); border-radius: 8px; padding: 10px 14px; }
+
+/* ---------- タイムライン（PC） ---------- */
+.timeline { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.timeline svg { display: block; width: 100%; height: auto; }
+.timeline .row { cursor: pointer; }
+.timeline .row:hover .row-bg, .timeline .row:focus .row-bg, .timeline .row.selected .row-bg { fill: var(--surface-2); }
+.timeline .row:focus { outline: none; }
+.timeline .row:focus-visible .row-bg { stroke: var(--link); stroke-width: 2; }
+.timeline .past { opacity: .4; }
+.detail { margin-top: 10px; }
+.empty { padding: 24px; color: var(--muted); text-align: center; }
+
+/* ---------- カード（スマホ・受付中欄・詳細） ---------- */
+.list-view { display: none; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-left: 5px solid var(--cat, var(--border));
+  border-radius: 10px; padding: 10px 14px;
+}
+.card.past { opacity: .5; }
+.card.is-next { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); border-left-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.card-company { font-size: .85rem; color: var(--muted); }
+.card-title { font-weight: 700; margin: 0; font-size: 1rem; }
+.days { font-weight: 700; white-space: nowrap; }
+.is-next .days { color: var(--accent); }
+.card-date { margin: 2px 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; padding: 0; list-style: none; }
+.tag { font-size: .78rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 0 6px; }
+.tag.cat { color: var(--surface); background: var(--cat); border-color: var(--cat); }
+.tag.houdini { border-color: var(--link); color: var(--link); }
+.warn { display: inline-block; font-size: .78rem; color: var(--warn); background: var(--warn-soft); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; margin: 2px 0; }
+.note { font-size: .88rem; color: var(--muted); margin: 4px 0; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .88rem; margin-top: 6px; }
+.checked { font-size: .75rem; color: var(--muted); margin: 4px 0 0; }
+
+/* ---------- 凡例・受付中欄・フッター ---------- */
+.legend, .open-section { margin-top: 20px; }
+.legend ul { display: flex; flex-wrap: wrap; gap: 6px 18px; list-style: none; padding: 0; margin: 0; font-size: .88rem; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend svg { width: 28px; height: 16px; }
+.site-footer { color: var(--muted); font-size: .82rem; padding-top: 16px; padding-bottom: 32px; }
+.site-footer p { margin: 4px 0; }
+
+/* ---------- スマホ幅：タイムラインを隠してカードを出す ---------- */
+@media (max-width: 760px) {
+  .timeline-view { display: none; }
+  .list-view { display: block; }
+  .range-nav { display: none; } /* カード一覧は期間で区切らないので、期間移動ボタンは隠す */
+  .cards { grid-template-columns: 1fr; }
+  .site-header h1 { font-size: 1.1rem; }
+  .filters { padding: 10px 12px; }
+}
