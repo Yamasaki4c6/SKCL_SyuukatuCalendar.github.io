@@ -1,0 +1,91 @@
+<!doctype html>
+<!--
+  index.html：ページの骨組み（どこに何を置くか）だけを書いたファイルです。
+  中身（会社名・日付など）は data/schedule.json から app.js が読み込んで描きます。
+  日程の更新でこのファイルを触る必要はありません。
+-->
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>28卒 ゲーム・CG就活カレンダー</title>
+  <meta name="description" content="28卒（2028年3月卒）向け、ゲーム・CG業界のインターン・本選考の締切一覧">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div>
+        <h1>28卒 ゲーム・CG就活カレンダー</h1>
+        <p class="sub">最終更新日：<span id="updated-at">—</span></p>
+      </div>
+      <div class="header-side">
+        <div class="next-box" id="next-box">
+          <span class="next-label">次の締切まで</span>
+          <span class="next-days" id="next-days">—</span>
+          <span class="next-what" id="next-what"></span>
+        </div>
+        <button type="button" class="theme-btn" id="theme-btn" aria-label="表示テーマを切り替え">表示：自動</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 絞り込み -->
+    <section class="filters" aria-label="絞り込み">
+      <fieldset class="filter-group">
+        <legend>カテゴリ</legend>
+        <div id="category-filters" class="chips"></div>
+      </fieldset>
+      <label class="filter-group">
+        <span class="filter-title">職種</span>
+        <select id="role-filter"><option value="">すべての職種</option></select>
+      </label>
+      <div class="filter-group toggles">
+        <label><input type="checkbox" id="houdini-filter"> Houdini明示ありのみ</label>
+        <label><input type="checkbox" id="hide-past"> 締切済みを隠す</label>
+      </div>
+    </section>
+
+    <!-- 表示期間の移動 -->
+    <nav class="range-nav" aria-label="表示期間">
+      <button type="button" id="prev-btn">◀ 前の月</button>
+      <span id="range-label" class="range-label"></span>
+      <button type="button" id="today-btn">今日へ</button>
+      <button type="button" id="next-btn">次の月 ▶</button>
+    </nav>
+
+    <p id="message" class="message" hidden></p>
+
+    <!-- PC向け：タイムライン（app.js がSVGを描く） -->
+    <section class="timeline-view" aria-label="タイムライン">
+      <div id="timeline" class="timeline"></div>
+      <div id="detail" class="detail" hidden></div>
+    </section>
+
+    <!-- スマホ向け：カード一覧 -->
+    <section class="list-view" aria-label="日付順の一覧">
+      <div id="card-list" class="cards"></div>
+    </section>
+
+    <!-- 凡例 -->
+    <section class="legend" aria-label="凡例">
+      <h2>凡例</h2>
+      <ul id="legend"></ul>
+    </section>
+
+    <!-- 受付中・締切未定 -->
+    <section class="open-section">
+      <h2>受付中・締切未定</h2>
+      <div id="open-list" class="cards"></div>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <p>日程は変わることがあります。応募前に必ず各社の公式ページで確認してください。</p>
+    <p>⚠ の付いた項目は「要再確認」または「前年実績からの推測」です。</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
