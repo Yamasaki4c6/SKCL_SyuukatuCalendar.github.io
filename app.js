@@ -2,7 +2,9 @@
   app.js：data/schedule.json を読み込んで、画面を組み立てるファイルです。
   ・タイムラインは「左に会社名、右に週ごとの目盛り」。会社名をタップすると、その会社の締切が1行ずつ開きます。
   ・右側の図（SVG）はデータから毎回描きます。横にスクロール（ドラッグ・スライダー）できます。
-  ・締切の行をタップすると、下に詳細（公式ページ・Googleカレンダー追加）が出ます。
+  ・会社をタップすると、画面の下に詳細（公式ページ・Googleカレンダー追加）が出ます。
+  ・前年実績からの推測の日程は、最初は隠しています（「推測の日程も表示」で出る）。
+  ・カレンダーの上の検索欄で、会社名・予定名などのことばで絞り込めます。
   ・日付はすべて日本時間で計算します。
   日程の更新でこのファイルを触る必要はありません（更新は data/schedule.json だけ）。
 */
@@ -33,7 +35,7 @@
 
   // ===== 状態 =====
   var data = { updated_at: "", items: [] };
-  var state = { roles: ROLES.slice(), hidePast: true, open: {}, selectedCompany: null, focusId: null };
+  var state = { roles: ROLES.slice(), showGuess: false, query: "", open: {}, selectedCompany: null, focusId: null };
   var companiesById = {};
   var now = getNowJST();
   var firstRender = true;
@@ -88,6 +90,8 @@
   function endDay(it) { return toDay(it.end || it.start); }
   function isDeadlineLike(it) { return it.kind === "deadline" || it.kind === "span"; }
   function isUnsure(it) { return it.confidence && it.confidence !== "確定"; }
+  // 前年実績からの推測（実際の募集ではないもの）。最初は隠す
+  function isGuess(it) { return it.confidence === "前年実績からの推測"; }
 
   function isPast(it) {
     if (it.kind === "open") return false;
@@ -169,11 +173,18 @@
   }
 
   // ===== 絞り込みと並べ方 =====
-  function filteredItems() {
+  // 検索用に、全角・半角や大文字・小文字の違いをそろえる
+  function normText(s) { return String(s || "").normalize("NFKC").toLowerCase(); }
+  function queryWords() { return normText(state.query).split(/\s+/).filter(Boolean); }
+  // skipSearch=true のときは検索欄の言葉では絞らない（詳細ではその会社の予定を全部見せるため）
+  function filteredItems(skipSearch) {
+    var words = skipSearch ? [] : queryWords();
     return data.items.filter(function (it) {
       var roles = it.roles || [];
       if (roles.length && !roles.some(function (r) { return state.roles.indexOf(r) >= 0; })) return false;
-      if (state.hidePast && isPast(it)) return false;
+      if (!state.showGuess && isGuess(it)) return false;
+      // 検索：スペースで区切った言葉がすべて含まれる予定だけ（会社名・予定名・種類・補足・拠点など）
+      if (words.length && !words.every(function (w) { return it.searchText.indexOf(w) >= 0; })) return false;
       return true;
     });
   }
@@ -182,6 +193,10 @@
     var c = items.filter(function (it) { return isDeadlineLike(it) && !isPast(it) && !isUnsure(it); });
     c.sort(function (a, b) { return sortKey(a) - sortKey(b); });
     return c[0] || null;
+  }
+  // 会社の中の並び順：実際の予定（これから → 終わったもの）、そのあとに推測をまとめる
+  function byOrder(a, b) {
+    return (isGuess(a) * 2 + isPast(a)) - (isGuess(b) * 2 + isPast(b)) || sortKey(a) - sortKey(b);
   }
   // 会社ごとにまとめる。次の締切が近い会社が上、締切済みだけの会社は下
   function groupByCompany(items) {
@@ -195,7 +210,7 @@
       map[it.companyId].items.push(it);
     });
     list.forEach(function (g) {
-      g.items.sort(function (a, b) { return sortKey(a) - sortKey(b); });
+      g.items.sort(byOrder);
       var up = g.items.filter(function (it) { return !isPast(it); });
       // 並び順：日付が確定している次の予定が近い会社 → 推定だけの会社 → 受付中だけの会社 → 終わった会社
       var sure = up.filter(function (it) { return !isUnsure(it); });
@@ -290,7 +305,7 @@
 
     var groups = groupByCompany(items);
     if (!groups.length) {
-      area.appendChild(el("p", { "class": "empty" }, "条件に合う項目はありません。"));
+      area.appendChild(el("p", { "class": "empty" }, state.query.trim() ? "「" + state.query.trim() + "」に一致する予定はありません。" : "条件に合う項目はありません。"));
       left.style.display = "none";
       updateSlider();
       return;
@@ -320,7 +335,7 @@
         b = el("div", { "class": "left-section" }, row.label);
       } else if (row.type === "company") {
         var open = !!state.open[row.g.id];
-        b = el("button", { type: "button", "class": "left-row company" + (row.g.allPast ? " past" : "") + (state.selectedCompany === row.g.id ? " selected" : ""), "aria-expanded": open ? "true" : "false" });
+        b = el("button", { type: "button", "class": "left-row company" + (row.g.allPast ? " past" : "") + (state.selectedCompany === row.g.id ? " selected" : ""), "aria-expanded": open ? "true" : "false", "data-company": row.g.id });
         b.appendChild(el("span", { "class": "arrow", "aria-hidden": "true" }, "▶"));
         b.appendChild(el("span", { "class": "name" }, row.g.name));
         b.addEventListener("click", function () { toggleCompany(row.g.id); });
@@ -328,7 +343,8 @@
         var it = row.it;
         b = el("button", { type: "button", "class": "left-row item" + (isPast(it) ? " past" : "") + (next && next.id === it.id ? " is-next" : "") });
         var t = el("span", { "class": "t" });
-        if (isUnsure(it)) t.appendChild(el("span", { "class": "w", title: it.confidence }, "⚠ "));
+        if (isGuess(it)) t.appendChild(el("span", { "class": "guess-tag", title: it.confidence }, "推測"));
+        else if (isUnsure(it)) t.appendChild(el("span", { "class": "w", title: it.confidence }, "⚠ "));
         t.appendChild(document.createTextNode(it.title));
         b.appendChild(t);
         b.appendChild(el("span", { "class": "r" }, (it.roles || []).join("・")));
@@ -340,15 +356,18 @@
 
     // --- 上の目盛り（月・週）。上に貼り付く ---
     var head = svg("svg", { width: width, height: HEAD_H, viewBox: "0 0 " + width + " " + HEAD_H, "aria-hidden": "true" });
-    var p = dayToParts(range.from), i, ms, me, a, b2;
+    var p = dayToParts(range.from), i, ms, me, a, b2, yearShown = false;
     for (i = 0; ; i++) {
       ms = monthStart(p.y, p.m + i); me = monthStart(p.y, p.m + i + 1);
       if (ms >= range.to) break;
       a = Math.max(ms, range.from); b2 = Math.min(me, range.to);
       if (i % 2 === 1) head.appendChild(svg("rect", { x: x(a), y: 0, width: x(b2) - x(a), height: HEAD_H, fill: "var(--surface-2)", opacity: 0.6 }));
       if (ms >= range.from) head.appendChild(svg("line", { x1: x(ms), x2: x(ms), y1: 0, y2: HEAD_H, stroke: "var(--border)" }));
+      // 端の数日だけの月は名前が隣と重なるので書かない。年は最初に書く月と1月に付ける
+      if (x(b2) - x(a) < 60) continue;
       var mp = dayToParts(a);
-      head.appendChild(svg("text", { x: x(a) + 6, y: 18, "font-size": 12, "font-weight": 700, fill: "var(--text)" }, (i === 0 || mp.m === 1 ? mp.y + "年" : "") + mp.m + "月"));
+      head.appendChild(svg("text", { x: x(a) + 6, y: 18, "font-size": 12, "font-weight": 700, fill: "var(--text)" }, (!yearShown || mp.m === 1 ? mp.y + "年" : "") + mp.m + "月"));
+      yearShown = true;
     }
     for (var w = range.from; w < range.to; w += 7) {
       if (w === thisWeek) head.appendChild(svg("rect", { x: x(w), y: 26, width: WEEK_W, height: HEAD_H - 26, fill: "var(--accent-soft)" }));
@@ -464,7 +483,7 @@
   function toggleCompany(id) {
     var opening = !state.open[id];
     state.open[id] = opening;
-    if (opening) { state.selectedCompany = id; state.focusId = null; }
+    if (opening) { state.selectedCompany = id; state.focusId = null; resetSheetScroll = true; }
     else if (state.selectedCompany === id) {
       // 閉じたら、ほかに開いている会社があればその詳細に切り替える
       var others = Object.keys(state.open).filter(function (k) { return state.open[k]; });
@@ -472,67 +491,111 @@
       state.focusId = null;
     }
     render();
+    if (opening) keepRowVisible(id);
+  }
+  // 開いた会社の行が、下の詳細に隠れてしまうときは少しだけ上へずらす
+  function keepRowVisible(id) {
+    var row = document.querySelector('.left-row.company[data-company="' + id + '"]');
+    var sheet = document.getElementById("detail");
+    if (!row || sheet.hidden) return;
+    var limit = window.innerHeight - sheet.offsetHeight - 8;
+    var r = row.getBoundingClientRect();
+    if (r.bottom + ITEM_H > limit) window.scrollBy({ top: r.bottom + ITEM_H - limit, behavior: "smooth" });
   }
   function showCompany(id, itemId) {
+    if (state.selectedCompany !== id) resetSheetScroll = true;
     state.selectedCompany = id;
     state.focusId = itemId || null;
     render();
-    var target = document.getElementById("ev-" + itemId) || document.getElementById("detail");
-    if (target && target.getBoundingClientRect().top > window.innerHeight - 80) target.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    // 詳細（画面下）の中で、タップした予定が見える位置までスクロールする
+    var target = document.getElementById("ev-" + itemId);
+    var sheet = document.getElementById("detail");
+    if (target) sheet.scrollTop += target.getBoundingClientRect().top - sheet.getBoundingClientRect().top - 56;
   }
+  function closeDetail() { state.selectedCompany = null; state.focusId = null; render(); }
 
-  // ===== 詳細（開いた会社の予定の一覧） =====
-  function drawDetail(items, next) {
+  // ===== 詳細（画面の下に貼り付く。開いた会社の予定の一覧） =====
+  var resetSheetScroll = false;
+  function eventItem(it, next) {
+    var li = el("li", { id: "ev-" + it.id, "class": "ev" + (isPast(it) ? " past" : "") + (isGuess(it) ? " guess" : "") + (next && next.id === it.id ? " is-next" : "") + (state.focusId === it.id ? " focus" : "") });
+    li.style.setProperty("--cat", CATEGORY_COLOR[it.category] || "var(--border)");
+    var line1 = el("div", { "class": "ev-head" });
+    line1.appendChild(el("span", { "class": "ev-cat" }, it.category));
+    line1.appendChild(el("strong", null, it.title));
+    line1.appendChild(el("span", { "class": "days" }, statusText(it)));
+    li.appendChild(line1);
+    li.appendChild(el("p", null, dateText(it) + ((it.roles || []).length ? "　職種：" + it.roles.join("・") : "")));
+    if (isUnsure(it) && !isGuess(it)) li.appendChild(el("p", { "class": "warn" }, "⚠ " + it.confidence));
+    if (it.note) li.appendChild(el("p", { "class": "note" }, it.note));
+    var links = el("div", { "class": "links" });
+    if (it.url) links.appendChild(el("a", { href: it.url, target: "_blank", rel: "noopener" }, "公式ページ ↗"));
+    links.appendChild(el("a", { href: gcalUrl(it), target: "_blank", rel: "noopener" }, "Googleカレンダーに追加"));
+    li.appendChild(links);
+    return li;
+  }
+  function drawDetail(next) {
     var box = document.getElementById("detail");
     box.innerHTML = "";
-    var list = items.filter(function (x) { return x.companyId === state.selectedCompany; });
-    if (!list.length) { box.hidden = true; return; }
-    list.sort(function (a, b) { return sortKey(a) - sortKey(b); });
-    box.hidden = false;
-    var card = el("article", { "class": "card" });
-    var close = el("button", { type: "button", "class": "btn close", "aria-label": "閉じる" }, "×");
-    close.addEventListener("click", function () { state.selectedCompany = null; state.focusId = null; render(); });
-    card.appendChild(close);
-    var h = el("h2", { "class": "card-title" }, list[0].company);
-    card.appendChild(h);
+    // 詳細は検索欄の言葉では絞らず、その会社の予定をすべて出す
+    var list = filteredItems(true).filter(function (x) { return x.companyId === state.selectedCompany; });
+    var hiddenGuesses = state.showGuess ? 0 : data.items.filter(function (x) { return x.companyId === state.selectedCompany && isGuess(x); }).length;
     var c = companiesById[state.selectedCompany];
-    if (c) {
-      var meta = [c.type, c.location].filter(Boolean).join("・");
-      if (meta) card.appendChild(el("p", { "class": "note" }, meta));
-      var dl = el("dl", { "class": "co-info" });
-      [["28卒の状況", c.status], ["次に見る日程", c.next], ["3DCG・TA関連の職種", c.roles_note],
-       ["情報ランク", c.rank ? c.rank + "（" + (RANK_TEXT[c.rank] || "") + "）" : ""]].forEach(function (pair) {
-        if (!pair[1]) return;
-        dl.appendChild(el("dt", null, pair[0]));
-        dl.appendChild(el("dd", null, pair[1]));
-      });
-      if (dl.children.length) card.appendChild(dl);
-      if (c.url) {
-        var top = el("p", { "class": "links" });
-        top.appendChild(el("a", { href: c.url, target: "_blank", rel: "noopener" }, "企業の情報ページ ↗"));
-        card.appendChild(top);
-      }
-    }
-    var ul = el("ul", { "class": "events" });
-    list.forEach(function (it) {
-      var li = el("li", { id: "ev-" + it.id, "class": "ev" + (isPast(it) ? " past" : "") + (next && next.id === it.id ? " is-next" : "") + (state.focusId === it.id ? " focus" : "") });
-      li.style.setProperty("--cat", CATEGORY_COLOR[it.category] || "var(--border)");
-      var line1 = el("div", { "class": "ev-head" });
-      line1.appendChild(el("span", { "class": "ev-cat" }, it.category));
-      line1.appendChild(el("strong", null, it.title));
-      line1.appendChild(el("span", { "class": "days" }, statusText(it)));
-      li.appendChild(line1);
-      li.appendChild(el("p", null, dateText(it) + ((it.roles || []).length ? "　職種：" + it.roles.join("・") : "")));
-      if (isUnsure(it)) li.appendChild(el("p", { "class": "warn" }, "⚠ " + it.confidence));
-      if (it.note) li.appendChild(el("p", { "class": "note" }, it.note));
-      var links = el("div", { "class": "links" });
-      if (it.url) links.appendChild(el("a", { href: it.url, target: "_blank", rel: "noopener" }, "公式ページ ↗"));
-      links.appendChild(el("a", { href: gcalUrl(it), target: "_blank", rel: "noopener" }, "Googleカレンダーに追加"));
-      li.appendChild(links);
-      ul.appendChild(li);
+    if (!c || (!list.length && !hiddenGuesses)) { box.hidden = true; fitSheet(); return; }
+    list.sort(byOrder);
+    box.hidden = false;
+
+    var head = el("div", { "class": "sheet-head" });
+    var title = el("div", { "class": "sheet-title" });
+    title.appendChild(el("h2", { "class": "card-title" }, c.name));
+    var meta = [c.type, c.location].filter(Boolean).join("・");
+    if (meta) title.appendChild(el("span", { "class": "note" }, meta));
+    head.appendChild(title);
+    var close = el("button", { type: "button", "class": "btn close", "aria-label": "詳細を閉じる" }, "×");
+    close.addEventListener("click", closeDetail);
+    head.appendChild(close);
+
+    var card = el("article", { "class": "card" });
+    card.appendChild(head);
+    var dl = el("dl", { "class": "co-info" });
+    [["28卒の状況", c.status], ["次に見る日程", c.next], ["3DCG・TA関連の職種", c.roles_note],
+     ["情報ランク", c.rank ? c.rank + "（" + (RANK_TEXT[c.rank] || "") + "）" : ""]].forEach(function (pair) {
+      if (!pair[1]) return;
+      dl.appendChild(el("dt", null, pair[0]));
+      dl.appendChild(el("dd", null, pair[1]));
     });
-    card.appendChild(ul);
+    if (dl.children.length) card.appendChild(dl);
+    if (c.url) {
+      var top = el("p", { "class": "links" });
+      top.appendChild(el("a", { href: c.url, target: "_blank", rel: "noopener" }, "企業の情報ページ ↗"));
+      card.appendChild(top);
+    }
+
+    // 実際の募集・予定と、前年実績からの推測を分けて並べる
+    var real = list.filter(function (it) { return !isGuess(it); });
+    var guesses = list.filter(isGuess);
+    if (real.length) {
+      var ul = el("ul", { "class": "events" });
+      real.forEach(function (it) { ul.appendChild(eventItem(it, next)); });
+      card.appendChild(ul);
+    } else {
+      card.appendChild(el("p", { "class": "note sub" }, "公式に出ている予定はまだありません。"));
+    }
+    if (guesses.length) {
+      card.appendChild(el("h3", { "class": "sub-head" }, "前年実績からの推測（実際の日程ではありません）"));
+      var ul2 = el("ul", { "class": "events" });
+      guesses.forEach(function (it) { ul2.appendChild(eventItem(it, next)); });
+      card.appendChild(ul2);
+    } else if (hiddenGuesses) {
+      card.appendChild(el("p", { "class": "note sub" }, "前年実績からの推測が " + hiddenGuesses + " 件あります（上の「推測の日程も表示」で見られます）。"));
+    }
     box.appendChild(card);
+    if (resetSheetScroll) { box.scrollTop = 0; resetSheetScroll = false; }
+    fitSheet();
+  }
+  // 詳細が下に貼り付いている分だけページの下に余白を作り、最後の行や一番下のタブまでスクロールできるようにする
+  function fitSheet() {
+    var box = document.getElementById("detail");
+    document.body.style.paddingBottom = box.hidden ? "" : box.offsetHeight + "px";
   }
 
   // ===== ヘッダー・一番下のタブ =====
@@ -577,7 +640,11 @@
     var next = findNext(items);
     drawHeader(next);
     drawChart(items, next);
-    drawDetail(items, next);
+    drawDetail(next);
+    var cnt = document.getElementById("count");
+    var nCo = {};
+    items.forEach(function (it) { nCo[it.companyId] = true; });
+    cnt.textContent = Object.keys(nCo).length + "社・" + items.length + "件";
   }
 
   // ===== 横移動（スライダー・ドラッグ） =====
@@ -621,7 +688,7 @@
     document.getElementById("today-btn").addEventListener("click", scrollToToday);
   }
 
-  // ===== 職種の切り替え・締切済みを隠す =====
+  // ===== 職種の切り替え・推測の表示・検索 =====
   function setupFilters() {
     var box = document.getElementById("role-filters");
     ROLES.forEach(function (r) {
@@ -634,7 +701,12 @@
       });
       box.appendChild(b);
     });
-    document.getElementById("hide-past").addEventListener("change", function (e) { state.hidePast = e.target.checked; render(); });
+    document.getElementById("show-guess").addEventListener("change", function (e) { state.showGuess = e.target.checked; render(); });
+    var search = document.getElementById("search");
+    search.addEventListener("input", function () { state.query = search.value; render(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && state.selectedCompany && document.activeElement !== search) closeDetail();
+    });
   }
 
   // ===== ライト/ダーク切り替え（自動 → ライト → ダーク） =====
@@ -690,6 +762,7 @@
       it.url = ev.url || c.url || "";
       it.roles = ev.roles || [];
       it.confidence = ev.confidence || "確定";
+      it.searchText = normText([c.name, c.group, c.type, c.location, ev.title, ev.category, ev.note, it.roles.join(" ")].join(" "));
       items.push(it);
     });
     if (problems.length) {
@@ -716,7 +789,7 @@
       var timer, wasNarrow = WEEK_W;
       window.addEventListener("resize", function () {
         clearTimeout(timer);
-        timer = setTimeout(function () { setWeekWidth(); if (WEEK_W !== wasNarrow) { wasNarrow = WEEK_W; render(); scrollToToday(); } else updateSlider(); }, 150);
+        timer = setTimeout(function () { setWeekWidth(); if (WEEK_W !== wasNarrow) { wasNarrow = WEEK_W; render(); scrollToToday(); } else { updateSlider(); fitSheet(); } }, 150);
       });
     })
     .catch(function (err) {

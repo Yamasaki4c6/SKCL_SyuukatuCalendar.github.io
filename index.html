@@ -22,11 +22,17 @@
   </header>
 
   <main class="wrap">
-    <!-- 職種の切り替え・締切済みを隠す・今日へ -->
+    <!-- 職種の切り替え・推測の表示・今日へ -->
     <div class="toolbar">
       <div id="role-filters" class="chips" role="group" aria-label="職種"></div>
-      <label class="toggle"><input type="checkbox" id="hide-past" checked> 締切済みを隠す</label>
+      <label class="toggle"><input type="checkbox" id="show-guess"> 推測の日程も表示</label>
       <button type="button" id="today-btn" class="btn">今日へ</button>
+    </div>
+
+    <!-- ワード検索：会社名・予定名・種類（インターンなど）・拠点などで絞り込む -->
+    <div class="search-bar">
+      <input type="search" id="search" class="search" placeholder="検索（例：Cygames、インターン、大阪）" aria-label="ワード検索" autocomplete="off">
+      <span id="count" class="count" aria-live="polite"></span>
     </div>
 
     <p id="message" class="message" hidden></p>
@@ -47,8 +53,8 @@
       <input type="range" id="slider" class="slider" min="0" max="0" value="0" aria-label="表示する時期を左右に移動">
     </section>
 
-    <!-- 会社をタップしたときの詳細（その会社の予定の一覧） -->
-    <div id="detail" class="detail" hidden></div>
+    <!-- 会社をタップしたときの詳細（その会社の予定の一覧）。画面の下に貼り付いて出る -->
+    <div id="detail" class="detail" role="region" aria-label="会社の詳細" hidden></div>
   </main>
 
   <!-- カーソルを合わせたときの小さな説明 -->
@@ -61,7 +67,9 @@
       <ul class="legend" id="legend"></ul>
       <ul class="notes">
         <li>日程は変わることがあります。応募前に必ず各社の公式ページで確認してください。</li>
-        <li>⚠ の付いた項目は「要再確認」または「前年実績からの推測」です。</li>
+        <li>⚠ の付いた項目は、月だけ分かっている・日時が未掲載などの「要再確認」です。</li>
+        <li>前年実績からの推測の日程は最初は隠れています。「推測の日程も表示」をオンにすると「推測」の印つきで出ます。</li>
+        <li>終わった予定も薄い色で表示したままにしています。</li>
         <li>日付・残り日数は日本時間で計算しています。</li>
       </ul>
       <button type="button" class="btn" id="theme-btn">表示：自動</button>
