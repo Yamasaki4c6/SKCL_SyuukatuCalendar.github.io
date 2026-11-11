@@ -31,7 +31,8 @@
 
   // ===== 状態 =====
   var data = { updated_at: "", items: [] };
-  var state = { roles: ROLES.slice(), hidePast: false, open: {}, selectedId: null };
+  var state = { roles: ROLES.slice(), hidePast: false, open: {}, selectedCompany: null, focusId: null };
+  var companiesById = {};
   var now = getNowJST();
   var firstRender = true;
 
@@ -169,7 +170,7 @@
   function groupByCompany(items) {
     var map = {}, list = [];
     items.forEach(function (it) {
-      if (!map[it.companyId]) { map[it.companyId] = { name: it.company, items: [] }; list.push(map[it.companyId]); }
+      if (!map[it.companyId]) { map[it.companyId] = { id: it.companyId, name: it.company, items: [] }; list.push(map[it.companyId]); }
       map[it.companyId].items.push(it);
     });
     list.forEach(function (g) {
@@ -236,12 +237,14 @@
   }
 
   // ===== タイムライン =====
+  // 目盛り（日付）は別のSVGにして、画面を下にスクロールしても上に貼り付いたまま見えるようにする
   function drawChart(items, next) {
     var left = document.getElementById("left-col");
     var area = document.getElementById("chart-area");
+    var headArea = document.getElementById("head-area");
     var scroller = document.getElementById("chart-scroll");
     var keepScroll = scroller.scrollLeft;
-    left.innerHTML = ""; area.innerHTML = "";
+    left.innerHTML = ""; area.innerHTML = ""; headArea.innerHTML = "";
 
     var groups = groupByCompany(items);
     if (!groups.length) {
@@ -256,88 +259,102 @@
     var rows = [];
     groups.forEach(function (g) {
       rows.push({ type: "company", g: g, h: COMPANY_H });
-      if (state.open[g.name]) g.items.forEach(function (it) { rows.push({ type: "item", it: it, h: ITEM_H }); });
+      if (state.open[g.id]) g.items.forEach(function (it) { rows.push({ type: "item", it: it, g: g, h: ITEM_H }); });
     });
 
     var range = chartRange(data.items);
     var dayW = WEEK_W / 7;
     var width = (range.to - range.from) * dayW;
-    var height = HEAD_H + rows.reduce(function (a, r) { return a + r.h; }, 0);
+    var height = rows.reduce(function (a, r) { return a + r.h; }, 0);
     function x(day) { return (day - range.from) * dayW; }
+    var thisWeek = mondayOf(now.day);
 
     // --- 左の列 ---
-    left.appendChild(el("div", { "class": "left-head", style: "height:" + HEAD_H + "px" }));
     rows.forEach(function (row) {
       var b;
       if (row.type === "company") {
-        var open = !!state.open[row.g.name];
-        b = el("button", { type: "button", "class": "left-row company" + (row.g.allPast ? " past" : ""), "aria-expanded": open ? "true" : "false" });
+        var open = !!state.open[row.g.id];
+        b = el("button", { type: "button", "class": "left-row company" + (row.g.allPast ? " past" : "") + (state.selectedCompany === row.g.id ? " selected" : ""), "aria-expanded": open ? "true" : "false" });
         b.appendChild(el("span", { "class": "arrow", "aria-hidden": "true" }, "▶"));
         b.appendChild(el("span", { "class": "name" }, row.g.name));
-        b.addEventListener("click", function () { state.open[row.g.name] = !open; render(); });
+        b.addEventListener("click", function () { toggleCompany(row.g.id); });
       } else {
         var it = row.it;
-        b = el("button", { type: "button", "class": "left-row item" + (isPast(it) ? " past" : "") + (next && next.id === it.id ? " is-next" : "") + (state.selectedId === it.id ? " selected" : "") });
+        b = el("button", { type: "button", "class": "left-row item" + (isPast(it) ? " past" : "") + (next && next.id === it.id ? " is-next" : "") });
         var t = el("span", { "class": "t" });
         if (isUnsure(it)) t.appendChild(el("span", { "class": "w", title: it.confidence }, "⚠ "));
         t.appendChild(document.createTextNode(it.title));
         b.appendChild(t);
         b.appendChild(el("span", { "class": "r" }, (it.roles || []).join("・")));
-        b.addEventListener("click", function () { selectItem(it.id); });
+        b.addEventListener("click", function () { showCompany(row.g.id, it.id); });
       }
       b.style.height = row.h + "px";
       left.appendChild(b);
     });
 
-    // --- 右の図（SVG） ---
-    var root = svg("svg", { width: width, height: height, viewBox: "0 0 " + width + " " + height, role: "img", "aria-label": "締切のタイムライン（週ごと）" });
-
-    // 月ごとの薄い色分けと月名
-    var p = dayToParts(range.from), i = 0;
-    for (;; i++) {
-      var ms = monthStart(p.y, p.m + i), me = monthStart(p.y, p.m + i + 1);
+    // --- 上の目盛り（月・週）。上に貼り付く ---
+    var head = svg("svg", { width: width, height: HEAD_H, viewBox: "0 0 " + width + " " + HEAD_H, "aria-hidden": "true" });
+    var p = dayToParts(range.from), i, ms, me, a, b2;
+    for (i = 0; ; i++) {
+      ms = monthStart(p.y, p.m + i); me = monthStart(p.y, p.m + i + 1);
       if (ms >= range.to) break;
-      var a = Math.max(ms, range.from), b2 = Math.min(me, range.to);
+      a = Math.max(ms, range.from); b2 = Math.min(me, range.to);
+      if (i % 2 === 1) head.appendChild(svg("rect", { x: x(a), y: 0, width: x(b2) - x(a), height: HEAD_H, fill: "var(--surface-2)", opacity: 0.6 }));
+      if (ms >= range.from) head.appendChild(svg("line", { x1: x(ms), x2: x(ms), y1: 0, y2: HEAD_H, stroke: "var(--border)" }));
+      var mp = dayToParts(a);
+      head.appendChild(svg("text", { x: x(a) + 6, y: 18, "font-size": 12, "font-weight": 700, fill: "var(--text)" }, (i === 0 || mp.m === 1 ? mp.y + "年" : "") + mp.m + "月"));
+    }
+    for (var w = range.from; w < range.to; w += 7) {
+      if (w === thisWeek) head.appendChild(svg("rect", { x: x(w), y: 26, width: WEEK_W, height: HEAD_H - 26, fill: "var(--accent-soft)" }));
+      head.appendChild(svg("line", { x1: x(w), x2: x(w), y1: 26, y2: HEAD_H, stroke: "var(--grid)" }));
+      head.appendChild(svg("text", { x: x(w) + 4, y: 42, "font-size": 11, fill: w === thisWeek ? "var(--today)" : "var(--muted)", "font-weight": w === thisWeek ? 700 : 400 }, md(w)));
+    }
+    var tx = x(now.day) + dayW * (now.minutes / 1440);
+    head.appendChild(svg("line", { x1: tx, x2: tx, y1: 26, y2: HEAD_H, stroke: "var(--today)", "stroke-width": 1.5, "stroke-dasharray": "4 4" }));
+    headArea.appendChild(head);
+
+    // --- 本体の図（SVG） ---
+    var root = svg("svg", { width: width, height: height, viewBox: "0 0 " + width + " " + height, role: "img", "aria-label": "締切のタイムライン（週ごと）" });
+    for (i = 0; ; i++) {
+      ms = monthStart(p.y, p.m + i); me = monthStart(p.y, p.m + i + 1);
+      if (ms >= range.to) break;
+      a = Math.max(ms, range.from); b2 = Math.min(me, range.to);
       if (i % 2 === 1) root.appendChild(svg("rect", { x: x(a), y: 0, width: x(b2) - x(a), height: height, fill: "var(--surface-2)", opacity: 0.6 }));
       if (ms >= range.from) root.appendChild(svg("line", { x1: x(ms), x2: x(ms), y1: 0, y2: height, stroke: "var(--border)" }));
-      var mp = dayToParts(Math.max(ms, range.from));
-      root.appendChild(svg("text", { x: x(a) + 6, y: 18, "font-size": 12, "font-weight": 700, fill: "var(--text)" }, (i === 0 || mp.m === 1 ? mp.y + "年" : "") + mp.m + "月"));
     }
-    // 週の目盛り（月曜始まり）
-    var thisWeek = mondayOf(now.day);
-    for (var w = range.from; w < range.to; w += 7) {
-      if (w === thisWeek) root.appendChild(svg("rect", { x: x(w), y: 26, width: WEEK_W, height: HEAD_H - 26, fill: "var(--accent-soft)" }));
-      root.appendChild(svg("line", { x1: x(w), x2: x(w), y1: 26, y2: height, stroke: "var(--grid)" }));
-      root.appendChild(svg("text", { x: x(w) + 4, y: 42, "font-size": 11, fill: w === thisWeek ? "var(--today)" : "var(--muted)", "font-weight": w === thisWeek ? 700 : 400 }, md(w)));
-    }
-    root.appendChild(svg("line", { x1: 0, x2: width, y1: HEAD_H - 0.5, y2: HEAD_H - 0.5, stroke: "var(--border)" }));
+    for (w = range.from; w < range.to; w += 7) root.appendChild(svg("line", { x1: x(w), x2: x(w), y1: 0, y2: height, stroke: "var(--grid)" }));
 
-    // 行
-    var y = HEAD_H;
+    var y = 0;
     rows.forEach(function (row) {
       var cy = y + row.h / 2;
       var g = svg("g");
       if (row.type === "company") {
         // 会社の行：閉じているときだけ、その会社の締切をまとめて小さく表示
-        if (!state.open[row.g.name]) {
+        if (!state.open[row.g.id]) {
           var upcoming = row.g.items.filter(function (it) { return !isPast(it); })[0];
           row.g.items.forEach(function (it) {
             var mg = svg("g", isPast(it) ? { opacity: 0.35 } : null);
             var box = drawMark(mg, it, x, cy, range, next && next.id === it.id, true, width);
             if (it === upcoming) mg.appendChild(svg("text", { x: box.r + 6, y: cy + 4, "font-size": 11, fill: next && next.id === it.id ? "var(--accent)" : "var(--muted)" }, shortDate(it)));
+            attachTip(mg, it);
             g.appendChild(mg);
           });
           if (row.g.allPast) g.setAttribute("opacity", 0.8);
         }
+        g.style.cursor = "pointer";
+        g.appendChild(svg("rect", { x: 0, y: y, width: width, height: row.h, fill: "transparent" }));
+        g.firstChild && g.insertBefore(g.lastChild, g.firstChild);
+        g.addEventListener("click", function () { if (!dragMoved) toggleCompany(row.g.id); });
       } else {
         var it = row.it, isNext = next && next.id === it.id;
-        g.appendChild(svg("rect", { x: 0, y: y, width: width, height: row.h, fill: state.selectedId === it.id ? "var(--grid)" : "var(--surface-2)", opacity: 0.5 }));
+        g.appendChild(svg("rect", { x: 0, y: y, width: width, height: row.h, fill: state.focusId === it.id ? "var(--grid)" : "var(--surface-2)", opacity: 0.5 }));
         var ig = svg("g", isPast(it) ? { opacity: 0.4 } : null);
         var box2 = drawMark(ig, it, x, cy, range, isNext, false, width);
         ig.appendChild(svg("text", { x: box2.r + 8, y: cy + 4, "font-size": 12, "font-weight": isNext ? 700 : 400, fill: isNext ? "var(--accent)" : "var(--text)" }, shortDate(it) + (isNext ? "  次の締切" : "")));
+        attachTip(ig, it);
         g.appendChild(ig);
         g.style.cursor = "pointer";
-        g.addEventListener("click", function () { if (!dragMoved) selectItem(it.id); });
+        g.addEventListener("click", function () { if (!dragMoved) showCompany(row.g.id, it.id); });
       }
       g.appendChild(svg("line", { x1: 0, x2: width, y1: y + row.h - 0.5, y2: y + row.h - 0.5, stroke: "var(--grid)" }));
       root.appendChild(g);
@@ -345,14 +362,13 @@
     });
 
     // 今日の縦線（点線）
-    var tx = x(now.day) + dayW * (now.minutes / 1440);
-    root.appendChild(svg("line", { x1: tx, x2: tx, y1: 26, y2: height, stroke: "var(--today)", "stroke-width": 1.5, "stroke-dasharray": "4 4" }));
-
+    root.appendChild(svg("line", { x1: tx, x2: tx, y1: 0, y2: height, stroke: "var(--today)", "stroke-width": 1.5, "stroke-dasharray": "4 4" }));
     area.appendChild(root);
 
     // スクロール位置：初回と「今日へ」は今日の少し前、それ以外はそのまま
     if (firstRender) { scrollToToday(); firstRender = false; }
     else scroller.scrollLeft = keepScroll;
+    syncHead();
     updateSlider();
   }
 
@@ -360,39 +376,96 @@
     var range = chartRange(data.items);
     var scroller = document.getElementById("chart-scroll");
     scroller.scrollLeft = Math.max(0, (mondayOf(now.day) - 14 - range.from) * WEEK_W / 7);
+    syncHead();
     updateSlider();
   }
 
-  function selectItem(id) {
-    state.selectedId = state.selectedId === id ? null : id;
-    render();
-    var d = document.getElementById("detail");
-    if (state.selectedId && d.getBoundingClientRect().top > window.innerHeight - 80) d.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  // ===== ひし形・バーにカーソルを合わせたときの小さな説明 =====
+  function attachTip(node, it) {
+    node.style.cursor = "pointer";
+    node.addEventListener("pointerenter", function (e) {
+      if (e.pointerType !== "mouse" || dragging()) return;
+      var tip = document.getElementById("tip");
+      tip.innerHTML = "";
+      tip.appendChild(el("strong", null, it.company + "　" + it.title));
+      tip.appendChild(el("span", null, dateText(it)));
+      tip.appendChild(el("span", { "class": "tip-status" }, statusText(it) + (isUnsure(it) ? "　⚠ " + it.confidence : "")));
+      tip.hidden = false;
+      moveTip(e);
+    });
+    node.addEventListener("pointermove", moveTip);
+    node.addEventListener("pointerleave", function () { document.getElementById("tip").hidden = true; });
+  }
+  function moveTip(e) {
+    var tip = document.getElementById("tip");
+    if (tip.hidden) return;
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = Math.min(e.clientX + 14, window.innerWidth - w - 8);
+    var top = e.clientY + 16 + h > window.innerHeight ? e.clientY - h - 10 : e.clientY + 16;
+    tip.style.left = Math.max(8, left) + "px";
+    tip.style.top = top + "px";
   }
 
-  // ===== 詳細カード =====
+  // ===== 会社を開く・閉じる（開いた会社の詳細を下に出す） =====
+  function toggleCompany(id) {
+    var opening = !state.open[id];
+    state.open[id] = opening;
+    if (opening) { state.selectedCompany = id; state.focusId = null; }
+    else if (state.selectedCompany === id) {
+      // 閉じたら、ほかに開いている会社があればその詳細に切り替える
+      var others = Object.keys(state.open).filter(function (k) { return state.open[k]; });
+      state.selectedCompany = others.length ? others[others.length - 1] : null;
+      state.focusId = null;
+    }
+    render();
+  }
+  function showCompany(id, itemId) {
+    state.selectedCompany = id;
+    state.focusId = itemId || null;
+    render();
+    var target = document.getElementById("ev-" + itemId) || document.getElementById("detail");
+    if (target && target.getBoundingClientRect().top > window.innerHeight - 80) target.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  // ===== 詳細（開いた会社の予定の一覧） =====
   function drawDetail(items, next) {
     var box = document.getElementById("detail");
     box.innerHTML = "";
-    var it = items.filter(function (x) { return x.id === state.selectedId; })[0];
-    if (!it) { box.hidden = true; return; }
+    var list = items.filter(function (x) { return x.companyId === state.selectedCompany; });
+    if (!list.length) { box.hidden = true; return; }
+    list.sort(function (a, b) { return sortKey(a) - sortKey(b); });
     box.hidden = false;
-    var card = el("article", { "class": "card" + (next && next.id === it.id ? " is-next" : "") });
-    card.style.setProperty("--cat", CATEGORY_COLOR[it.category] || "var(--border)");
+    var card = el("article", { "class": "card" });
     var close = el("button", { type: "button", "class": "btn close", "aria-label": "閉じる" }, "×");
-    close.addEventListener("click", function () { selectItem(it.id); });
+    close.addEventListener("click", function () { state.selectedCompany = null; state.focusId = null; render(); });
     card.appendChild(close);
-    card.appendChild(el("div", { "class": "card-company" }, it.company + "・" + it.category));
-    card.appendChild(el("h2", { "class": "card-title" }, it.title));
-    card.appendChild(el("p", null, dateText(it)));
-    card.appendChild(el("p", { "class": "days" }, statusText(it)));
-    if ((it.roles || []).length) card.appendChild(el("p", null, "職種：" + it.roles.join("・")));
-    if (isUnsure(it)) card.appendChild(el("p", { "class": "warn" }, "⚠ " + it.confidence));
-    if (it.note) card.appendChild(el("p", { "class": "note" }, it.note));
-    var links = el("div", { "class": "links" });
-    if (it.url) links.appendChild(el("a", { href: it.url, target: "_blank", rel: "noopener" }, "公式ページ ↗"));
-    links.appendChild(el("a", { href: gcalUrl(it), target: "_blank", rel: "noopener" }, "Googleカレンダーに追加"));
-    card.appendChild(links);
+    var h = el("h2", { "class": "card-title" }, list[0].company);
+    card.appendChild(h);
+    var c = companiesById[state.selectedCompany];
+    if (c && c.url) {
+      var top = el("p", { "class": "links" });
+      top.appendChild(el("a", { href: c.url, target: "_blank", rel: "noopener" }, "採用ページ ↗"));
+      card.appendChild(top);
+    }
+    var ul = el("ul", { "class": "events" });
+    list.forEach(function (it) {
+      var li = el("li", { id: "ev-" + it.id, "class": "ev" + (isPast(it) ? " past" : "") + (next && next.id === it.id ? " is-next" : "") + (state.focusId === it.id ? " focus" : "") });
+      li.style.setProperty("--cat", CATEGORY_COLOR[it.category] || "var(--border)");
+      var line1 = el("div", { "class": "ev-head" });
+      line1.appendChild(el("span", { "class": "ev-cat" }, it.category));
+      line1.appendChild(el("strong", null, it.title));
+      line1.appendChild(el("span", { "class": "days" }, statusText(it)));
+      li.appendChild(line1);
+      li.appendChild(el("p", null, dateText(it) + ((it.roles || []).length ? "　職種：" + it.roles.join("・") : "")));
+      if (isUnsure(it)) li.appendChild(el("p", { "class": "warn" }, "⚠ " + it.confidence));
+      if (it.note) li.appendChild(el("p", { "class": "note" }, it.note));
+      var links = el("div", { "class": "links" });
+      if (it.url) links.appendChild(el("a", { href: it.url, target: "_blank", rel: "noopener" }, "公式ページ ↗"));
+      links.appendChild(el("a", { href: gcalUrl(it), target: "_blank", rel: "noopener" }, "Googleカレンダーに追加"));
+      li.appendChild(links);
+      ul.appendChild(li);
+    });
+    card.appendChild(ul);
     box.appendChild(card);
   }
 
@@ -441,6 +514,11 @@
 
   // ===== 横移動（スライダー・ドラッグ） =====
   var dragMoved = false;
+  function dragging() { return document.getElementById("chart-scroll").classList.contains("dragging"); }
+  // 上に貼り付いている目盛りを、本体と同じだけ横にずらす
+  function syncHead() {
+    document.getElementById("head-scroll").scrollLeft = document.getElementById("chart-scroll").scrollLeft;
+  }
   function updateSlider() {
     var sc = document.getElementById("chart-scroll"), sl = document.getElementById("slider");
     var max = Math.max(0, sc.scrollWidth - sc.clientWidth);
@@ -449,7 +527,12 @@
   function setupScroll() {
     var sc = document.getElementById("chart-scroll"), sl = document.getElementById("slider");
     sl.addEventListener("input", function () { sc.scrollLeft = Number(sl.value); });
-    sc.addEventListener("scroll", function () { sl.value = sc.scrollLeft; });
+    sc.addEventListener("scroll", function () { sl.value = sc.scrollLeft; syncHead(); });
+    // 目盛りの上でホイール・トラックパッドを横に動かしたときも本体を動かす
+    document.getElementById("head-scroll").addEventListener("wheel", function (e) {
+      var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+      if (d) { sc.scrollLeft += d; e.preventDefault(); }
+    }, { passive: false });
     // マウスでつかんで左右に動かす（スマホは指でそのまま動く）
     var startX = 0, startLeft = 0, down = false;
     sc.addEventListener("pointerdown", function (e) {
@@ -547,6 +630,7 @@
       m.hidden = false;
       if (window.console) console.warn("schedule.json の問題:", problems);
     }
+    companiesById = companies;
     return { updated_at: json.updated_at || "", items: items };
   }
 
