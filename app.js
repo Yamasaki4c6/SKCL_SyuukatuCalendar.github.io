@@ -22,16 +22,18 @@
     "サークル": "var(--cat-circle)"
   };
   var KINDS = ["deadline", "span", "event", "open"];
+  var RANK_TEXT = { A: "28卒の日程を公式で確認済み", B: "28卒の一部情報、または前年の日程あり", C: "合同イベント参加などの手がかりのみ" };
   var CONFIDENCES = ["確定", "要再確認", "前年実績からの推測"];
   var WEEK_W = 56;        // 1週間の幅（px）。スマホ幅では setWeekWidth() で狭くする
   var HEAD_H = 50;        // 目盛りの高さ
   var COMPANY_H = 48;     // 会社の行の高さ
   var ITEM_H = 56;        // 締切の行の高さ
+  var SECTION_H = 30;     // 「企業」「合同説明会・イベント」の見出しの高さ
   var SVG_NS = "http://www.w3.org/2000/svg";
 
   // ===== 状態 =====
   var data = { updated_at: "", items: [] };
-  var state = { roles: ROLES.slice(), hidePast: false, open: {}, selectedCompany: null, focusId: null };
+  var state = { roles: ROLES.slice(), hidePast: true, open: {}, selectedCompany: null, focusId: null };
   var companiesById = {};
   var now = getNowJST();
   var firstRender = true;
@@ -95,6 +97,13 @@
     if (now.day === e && isDeadlineLike(it) && it.time) return now.minutes >= toMinutes(it.time);
     return false;
   }
+  // 「次に気にする日」：締切系は締切日、開催中のイベントは終了日、それ以外は開始日
+  function nextKey(it) {
+    if (it.kind === "open") return 1e12 + (startDay(it) || 0);
+    var s = startDay(it), e = endDay(it);
+    var d = isDeadlineLike(it) ? e : (now.day >= s ? e : s);
+    return d * 1440 + (toMinutes(it.time) || 0);
+  }
   function sortKey(it) {
     if (it.kind === "open") return 1e12;
     var d = it.kind === "event" ? startDay(it) : endDay(it);
@@ -102,7 +111,10 @@
   }
   function statusText(it) {
     var s = startDay(it), e = endDay(it);
-    if (it.kind === "open") return "受付中（締切未定）";
+    if (it.kind === "open") {
+      if (s !== null && now.day < s) return "受付開始まであと" + (s - now.day) + "日";
+      return s === null && isUnsure(it) ? "日程未定" : "受付中（締切未定）";
+    }
     if (it.kind === "event") {
       if (now.day < s) return "開始まであと" + (s - now.day) + "日";
       return now.day <= e ? "実施中" : "終了";
@@ -114,14 +126,18 @@
   }
   function dateText(it) {
     var s = startDay(it), e = endDay(it), t = it.time ? " " + it.time : "";
-    if (it.kind === "open") return s !== null ? fmt(s, true) + wd(s) + "〜 締切未定" : "締切未定";
+    if (it.kind === "open") return s !== null ? fmt(s, true) + wd(s) + "〜 締切未定" : (isUnsure(it) ? "日程未定" : "締切未定");
     if (it.kind === "deadline") return fmt(e, true) + wd(e) + t;
     return fmt(s, true) + wd(s) + " 〜 " + fmt(e, true) + wd(e) + (it.kind === "span" ? t : "");
   }
   function shortDate(it) {
     var s = startDay(it), e = endDay(it);
-    if (it.kind === "open") return "受付中";
+    if (it.kind === "open") {
+      if (s !== null && s > now.day) return fmt(s) + "〜 受付開始";
+      return s === null && isUnsure(it) ? "日程未定" : "受付中";
+    }
     if (it.kind === "deadline") return fmt(e) + (it.time ? " " + it.time : "");
+    if (s === e) return fmt(s) + (it.time ? " " + it.time : "");
     return fmt(s) + "〜" + fmt(e) + (it.kind === "span" && it.time ? " " + it.time : "");
   }
 
@@ -162,7 +178,8 @@
     });
   }
   function findNext(items) {
-    var c = items.filter(function (it) { return isDeadlineLike(it) && !isPast(it); });
+    // 「次の締切」は日付が確定しているものだけから選ぶ（推定の日付で急かさないため）
+    var c = items.filter(function (it) { return isDeadlineLike(it) && !isPast(it) && !isUnsure(it); });
     c.sort(function (a, b) { return sortKey(a) - sortKey(b); });
     return c[0] || null;
   }
@@ -170,16 +187,26 @@
   function groupByCompany(items) {
     var map = {}, list = [];
     items.forEach(function (it) {
-      if (!map[it.companyId]) { map[it.companyId] = { id: it.companyId, name: it.company, items: [] }; list.push(map[it.companyId]); }
+      if (!map[it.companyId]) {
+        var c = companiesById[it.companyId] || {};
+        map[it.companyId] = { id: it.companyId, name: it.company, group: c.group === "合同" ? "合同" : "企業", items: [] };
+        list.push(map[it.companyId]);
+      }
       map[it.companyId].items.push(it);
     });
     list.forEach(function (g) {
       g.items.sort(function (a, b) { return sortKey(a) - sortKey(b); });
       var up = g.items.filter(function (it) { return !isPast(it); });
-      g.key = up.length ? sortKey(up[0]) : 2e12 + sortKey(g.items[g.items.length - 1]);
+      // 並び順：日付が確定している次の予定が近い会社 → 推定だけの会社 → 受付中だけの会社 → 終わった会社
+      var sure = up.filter(function (it) { return !isUnsure(it); });
+      g.key = sure.length ? Math.min.apply(null, sure.map(nextKey))
+        : up.length ? 1e11 + Math.min.apply(null, up.map(nextKey))
+        : 2e12 + sortKey(g.items[g.items.length - 1]);
+      g.featured = (sure.length ? sure : up).slice().sort(function (a, b) { return nextKey(a) - nextKey(b); })[0] || null;
       g.allPast = !up.length;
     });
-    list.sort(function (a, b) { return a.key - b.key; });
+    // 企業を先、合同説明会・イベントの主催を後ろにまとめる
+    list.sort(function (a, b) { return (a.group === b.group ? 0 : a.group === "企業" ? -1 : 1) || a.key - b.key; });
     return list;
   }
 
@@ -214,10 +241,24 @@
     var color = isNext ? "var(--accent)" : (CATEGORY_COLOR[it.category] || "var(--muted)");
     var s = startDay(it), e = endDay(it);
     var h = small ? 10 : 16, r = small ? 6 : 8;
+    var unsure = isUnsure(it); // 日付が未確定のものは、白抜き・点線・薄い色で描く
     if (it.kind === "deadline") {
       var dx = x(e) + WEEK_W / 14;
-      g.appendChild(svg("path", { d: "M" + dx + " " + (cy - r) + "L" + (dx + r) + " " + cy + "L" + dx + " " + (cy + r) + "L" + (dx - r) + " " + cy + "Z", fill: color }));
+      g.appendChild(svg("path", { d: "M" + dx + " " + (cy - r) + "L" + (dx + r) + " " + cy + "L" + dx + " " + (cy + r) + "L" + (dx - r) + " " + cy + "Z", fill: unsure ? "var(--surface)" : color, stroke: unsure ? color : "none", "stroke-width": unsure ? 2 : 0 }));
       return { l: dx - r, r: dx + r };
+    }
+    if (it.kind === "event" && s === e) {
+      // 1日だけの説明会・イベントは丸
+      var ex = x(s) + WEEK_W / 14, er = small ? 4 : 6;
+      g.appendChild(svg("circle", { cx: ex, cy: cy, r: er, fill: unsure ? "var(--surface)" : color, stroke: color, "stroke-width": unsure ? 2 : 0 }));
+      return { l: ex - er, r: ex + er };
+    }
+    if (it.kind === "open" && small) {
+      // 会社の行（まとめ表示）では、受付中は短い点線だけ
+      var so = Math.max(s === null || s < now.day ? now.day : s, range.from);
+      g.appendChild(svg("circle", { cx: x(so), cy: cy, r: 3, fill: color, opacity: 0.7 }));
+      g.appendChild(svg("line", { x1: x(so), x2: x(so) + WEEK_W * 1.5, y1: cy, y2: cy, stroke: color, "stroke-width": 4, "stroke-dasharray": "2 3", opacity: 0.6 }));
+      return { l: x(so) - 3, r: x(so) + WEEK_W * 1.5 };
     }
     if (it.kind === "open") {
       var os = Math.max(s === null ? now.day : s, range.from);
@@ -229,9 +270,10 @@
     }
     var bx = x(s), bw = Math.max(x(e + 1) - bx, 6);
     if (it.kind === "span") {
-      g.appendChild(svg("rect", { x: bx, y: cy - h / 2, width: bw, height: h, rx: h / 2, fill: color }));
+      if (unsure) g.appendChild(svg("rect", { x: bx + 1, y: cy - h / 2 + 1, width: bw - 2, height: h - 2, rx: (h - 2) / 2, fill: color, "fill-opacity": 0.3, stroke: color, "stroke-width": 2, "stroke-dasharray": "5 3" }));
+      else g.appendChild(svg("rect", { x: bx, y: cy - h / 2, width: bw, height: h, rx: h / 2, fill: color }));
     } else {
-      g.appendChild(svg("rect", { x: bx + 1, y: cy - h / 2 + 1, width: bw - 2, height: h - 2, rx: (h - 2) / 2, fill: "none", stroke: color, "stroke-width": 2, "stroke-dasharray": isUnsure(it) ? "5 3" : "none" }));
+      g.appendChild(svg("rect", { x: bx + 1, y: cy - h / 2 + 1, width: bw - 2, height: h - 2, rx: (h - 2) / 2, fill: "none", stroke: color, "stroke-width": 2, "stroke-dasharray": unsure ? "5 3" : "none" }));
     }
     return { l: bx, r: bx + bw };
   }
@@ -257,7 +299,9 @@
 
     // 行の一覧（会社の行と、開いている会社の締切の行）
     var rows = [];
-    groups.forEach(function (g) {
+    var hasOrg = groups.some(function (g) { return g.group === "合同"; });
+    groups.forEach(function (g, gi) {
+      if (hasOrg && (gi === 0 || groups[gi - 1].group !== g.group)) rows.push({ type: "section", label: g.group === "合同" ? "合同説明会・イベント" : "企業", h: SECTION_H });
       rows.push({ type: "company", g: g, h: COMPANY_H });
       if (state.open[g.id]) g.items.forEach(function (it) { rows.push({ type: "item", it: it, g: g, h: ITEM_H }); });
     });
@@ -272,7 +316,9 @@
     // --- 左の列 ---
     rows.forEach(function (row) {
       var b;
-      if (row.type === "company") {
+      if (row.type === "section") {
+        b = el("div", { "class": "left-section" }, row.label);
+      } else if (row.type === "company") {
         var open = !!state.open[row.g.id];
         b = el("button", { type: "button", "class": "left-row company" + (row.g.allPast ? " past" : "") + (state.selectedCompany === row.g.id ? " selected" : ""), "aria-expanded": open ? "true" : "false" });
         b.appendChild(el("span", { "class": "arrow", "aria-hidden": "true" }, "▶"));
@@ -324,18 +370,20 @@
     }
     for (w = range.from; w < range.to; w += 7) root.appendChild(svg("line", { x1: x(w), x2: x(w), y1: 0, y2: height, stroke: "var(--grid)" }));
 
-    var y = 0;
+    var y = 0, labels = [];
     rows.forEach(function (row) {
       var cy = y + row.h / 2;
       var g = svg("g");
-      if (row.type === "company") {
+      if (row.type === "section") {
+        g.appendChild(svg("rect", { x: 0, y: y, width: width, height: row.h, fill: "var(--surface-2)" }));
+      } else if (row.type === "company") {
         // 会社の行：閉じているときだけ、その会社の締切をまとめて小さく表示
         if (!state.open[row.g.id]) {
-          var upcoming = row.g.items.filter(function (it) { return !isPast(it); })[0];
+          var upcoming = row.g.featured;
           row.g.items.forEach(function (it) {
             var mg = svg("g", isPast(it) ? { opacity: 0.35 } : null);
             var box = drawMark(mg, it, x, cy, range, next && next.id === it.id, true, width);
-            if (it === upcoming) mg.appendChild(svg("text", { x: box.r + 6, y: cy + 4, "font-size": 11, fill: next && next.id === it.id ? "var(--accent)" : "var(--muted)" }, shortDate(it)));
+            if (it === upcoming) labels.push({ x: box.r + 6, y: cy + 4, text: shortDate(it), next: next && next.id === it.id });
             attachTip(mg, it);
             g.appendChild(mg);
           });
@@ -350,7 +398,7 @@
         g.appendChild(svg("rect", { x: 0, y: y, width: width, height: row.h, fill: state.focusId === it.id ? "var(--grid)" : "var(--surface-2)", opacity: 0.5 }));
         var ig = svg("g", isPast(it) ? { opacity: 0.4 } : null);
         var box2 = drawMark(ig, it, x, cy, range, isNext, false, width);
-        ig.appendChild(svg("text", { x: box2.r + 8, y: cy + 4, "font-size": 12, "font-weight": isNext ? 700 : 400, fill: isNext ? "var(--accent)" : "var(--text)" }, shortDate(it) + (isNext ? "  次の締切" : "")));
+        ig.appendChild(svg("text", { x: box2.r + 8, y: cy + 4, "font-size": 12, "font-weight": isNext ? 700 : 400, fill: isNext ? "var(--accent)" : "var(--text)", stroke: "var(--surface)", "stroke-width": 3, "paint-order": "stroke" }, shortDate(it) + (isNext ? "  次の締切" : "")));
         attachTip(ig, it);
         g.appendChild(ig);
         g.style.cursor = "pointer";
@@ -359,6 +407,12 @@
       g.appendChild(svg("line", { x1: 0, x2: width, y1: y + row.h - 0.5, y2: y + row.h - 0.5, stroke: "var(--grid)" }));
       root.appendChild(g);
       y += row.h;
+    });
+
+    // 会社の行の日付ラベルは、図形に重なっても読めるよう縁取りして最後に描く
+    labels.forEach(function (l) {
+      root.appendChild(svg("text", { x: l.x, y: l.y, "font-size": 11, "font-weight": l.next ? 700 : 400, fill: l.next ? "var(--accent)" : "var(--muted)",
+        stroke: "var(--surface)", "stroke-width": 3, "paint-order": "stroke", "pointer-events": "none" }, l.text));
     });
 
     // 今日の縦線（点線）
@@ -442,10 +496,22 @@
     var h = el("h2", { "class": "card-title" }, list[0].company);
     card.appendChild(h);
     var c = companiesById[state.selectedCompany];
-    if (c && c.url) {
-      var top = el("p", { "class": "links" });
-      top.appendChild(el("a", { href: c.url, target: "_blank", rel: "noopener" }, "採用ページ ↗"));
-      card.appendChild(top);
+    if (c) {
+      var meta = [c.type, c.location].filter(Boolean).join("・");
+      if (meta) card.appendChild(el("p", { "class": "note" }, meta));
+      var dl = el("dl", { "class": "co-info" });
+      [["28卒の状況", c.status], ["次に見る日程", c.next], ["3DCG・TA関連の職種", c.roles_note],
+       ["情報ランク", c.rank ? c.rank + "（" + (RANK_TEXT[c.rank] || "") + "）" : ""]].forEach(function (pair) {
+        if (!pair[1]) return;
+        dl.appendChild(el("dt", null, pair[0]));
+        dl.appendChild(el("dd", null, pair[1]));
+      });
+      if (dl.children.length) card.appendChild(dl);
+      if (c.url) {
+        var top = el("p", { "class": "links" });
+        top.appendChild(el("a", { href: c.url, target: "_blank", rel: "noopener" }, "企業の情報ページ ↗"));
+        card.appendChild(top);
+      }
     }
     var ul = el("ul", { "class": "events" });
     list.forEach(function (it) {
@@ -493,7 +559,9 @@
     item(function (s) { s.appendChild(svg("path", { d: "M14 1L21 8L14 15L7 8Z", fill: "var(--muted)" })); }, "締切");
     item(function (s) { s.appendChild(svg("rect", { x: 1, y: 3, width: 26, height: 10, rx: 5, fill: "var(--muted)" })); }, "応募受付期間");
     item(function (s) { s.appendChild(svg("rect", { x: 2, y: 3, width: 24, height: 10, rx: 5, fill: "none", stroke: "var(--muted)", "stroke-width": 2 })); }, "実施期間・イベント");
+    item(function (s) { s.appendChild(svg("circle", { cx: 14, cy: 8, r: 5, fill: "var(--muted)" })); }, "1日だけの説明会・イベント");
     item(function (s) { s.appendChild(svg("line", { x1: 1, x2: 27, y1: 8, y2: 8, stroke: "var(--muted)", "stroke-width": 6, "stroke-dasharray": "3 4" })); }, "受付中（締切未定）");
+    item(function (s) { s.appendChild(svg("rect", { x: 2, y: 3, width: 24, height: 10, rx: 5, fill: "var(--muted)", "fill-opacity": 0.3, stroke: "var(--muted)", "stroke-width": 2, "stroke-dasharray": "4 2" })); }, "点線・白抜き＝日付が推定・未確定");
     item(function (s) { s.appendChild(svg("path", { d: "M14 1L21 8L14 15L7 8Z", fill: "var(--accent)" })); }, "次の締切");
     item(function (s) { s.appendChild(svg("line", { x1: 14, x2: 14, y1: 0, y2: 16, stroke: "var(--today)", "stroke-width": 1.5, "stroke-dasharray": "3 3" })); }, "今日");
     Object.keys(CATEGORY_COLOR).forEach(function (c) {
