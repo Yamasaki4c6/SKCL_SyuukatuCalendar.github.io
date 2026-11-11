@@ -18,6 +18,7 @@
       <h1>28卒 ゲーム・CG就活カレンダー</h1>
       <p class="next" id="next-box"></p>
     </div>
+    <p class="wrap disclaimer">あくまでAIの検索で確認できる情報のみを掲示しているため、参考程度にしてください。特にアカウントが無いとアクセスできない説明会の案内などは抜けていますのでご注意ください。実際のエントリーに際しては自身で調べた情報をもとに行ってください。本ツールによって支障が出ても、管理者は一切の責任を負うことは出来ません。</p>
   </header>
 
   <main class="wrap">
@@ -32,6 +33,11 @@
 
     <!-- タイムライン：左に会社名（タップで開閉）、右に週ごとの目盛り。横にスクロールできる -->
     <section class="chart" aria-label="タイムライン">
+      <!-- 日付の目盛り：画面を下にスクロールしても上に貼り付いて見える -->
+      <div class="chart-head">
+        <div class="head-corner"></div>
+        <div class="head-scroll" id="head-scroll"><div id="head-area"></div></div>
+      </div>
       <div class="chart-scroll" id="chart-scroll">
         <div class="chart-inner">
           <div class="left-col" id="left-col"></div>
@@ -41,14 +47,17 @@
       <input type="range" id="slider" class="slider" min="0" max="0" value="0" aria-label="表示する時期を左右に移動">
     </section>
 
-    <!-- 締切の行をタップしたときの詳細 -->
+    <!-- 会社をタップしたときの詳細（その会社の予定の一覧） -->
     <div id="detail" class="detail" hidden></div>
   </main>
 
+  <!-- カーソルを合わせたときの小さな説明 -->
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+
   <!-- 一番下：最終更新日・凡例・注意事項・表示テーマ -->
   <footer class="site-footer">
-    <details class="wrap info">
-      <summary>最終更新 <span id="updated-at">—</span>・凡例と注意事項</summary>
+    <div class="wrap info">
+      <p class="updated">最終更新 <span id="updated-at">—</span></p>
       <ul class="legend" id="legend"></ul>
       <ul class="notes">
         <li>日程は変わることがあります。応募前に必ず各社の公式ページで確認してください。</li>
@@ -56,7 +65,7 @@
         <li>日付・残り日数は日本時間で計算しています。</li>
       </ul>
       <button type="button" class="btn" id="theme-btn">表示：自動</button>
-    </details>
+    </div>
   </footer>
 
   <script src="app.js"></script>

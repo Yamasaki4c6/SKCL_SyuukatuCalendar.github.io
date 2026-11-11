@@ -19,10 +19,12 @@
   --accent-soft: #fdecec;
   --warn: #b25e00;          /* 未確定の印 */
   --link: #1f5fbf;
+  --cat-seminar: #0e8f9c;   /* 説明会 */
   --cat-intern: #2f6fde;    /* インターン */
+  --cat-early: #c2410c;     /* 早期選考 */
   --cat-main: #188a5b;      /* 本選考 */
   --cat-event: #8a4fd6;     /* イベント */
-  --cat-circle: #c2620a;    /* サークル */
+  --cat-circle: #7c7f88;    /* サークル */
   --left-w: 230px;          /* 左の会社名の列の幅 */
   color-scheme: light;
 }
@@ -33,7 +35,7 @@
     --bg: #14161b; --surface: #1c1f26; --surface-2: #252932; --text: #e8eaf0; --muted: #9aa1b0;
     --border: #333844; --grid: #262a33; --today: #ff7a45; --accent: #ff6369; --accent-soft: #3a1f23;
     --warn: #ffb44d; --link: #7fb0ff;
-    --cat-intern: #6b9cff; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #f0a050;
+    --cat-seminar: #3cc4d0; --cat-intern: #6b9cff; --cat-early: #ff8a4c; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #a3a7b1;
     color-scheme: dark;
   }
 }
@@ -42,7 +44,7 @@
   --bg: #14161b; --surface: #1c1f26; --surface-2: #252932; --text: #e8eaf0; --muted: #9aa1b0;
   --border: #333844; --grid: #262a33; --today: #ff7a45; --accent: #ff6369; --accent-soft: #3a1f23;
   --warn: #ffb44d; --link: #7fb0ff;
-  --cat-intern: #6b9cff; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #f0a050;
+  --cat-seminar: #3cc4d0; --cat-intern: #6b9cff; --cat-early: #ff8a4c; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #a3a7b1;
   color-scheme: dark;
 }
 
@@ -69,6 +71,9 @@ a { color: var(--link); }
 .site-header h1 { font-size: 1.25rem; margin: 0; }
 .next { margin: 0; font-size: .92rem; color: var(--muted); }
 .next strong { color: var(--accent); font-size: 1.15rem; margin: 0 4px; }
+.disclaimer {
+  margin: 8px auto 0; font-size: .78rem; line-height: 1.6; color: var(--muted);
+}
 
 /* ---------- ツールバー ---------- */
 .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 10px 0; }
@@ -83,7 +88,15 @@ a { color: var(--link); }
 .message { background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 8px; padding: 10px 14px; }
 
 /* ---------- タイムライン ---------- */
-.chart { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.chart { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: clip; }
+/* 日付の目盛り（上に貼り付く） */
+.chart-head {
+  position: sticky; top: 0; z-index: 5; display: flex;
+  background: var(--surface); border-bottom: 1px solid var(--border); border-radius: 12px 12px 0 0;
+}
+.head-corner { width: var(--left-w); flex: none; border-right: 1px solid var(--border); background: var(--surface); }
+.head-scroll { overflow: hidden; flex: 1; }
+#head-area svg { display: block; }
 .chart-scroll {
   overflow-x: auto; overflow-y: hidden; scrollbar-width: none; /* 下のスライダーで動かすので標準のバーは隠す */
   cursor: grab; -webkit-overflow-scrolling: touch;
@@ -98,7 +111,6 @@ a { color: var(--link); }
   position: sticky; left: 0; z-index: 2; width: var(--left-w); flex: none;
   background: var(--surface); border-right: 1px solid var(--border);
 }
-.left-head { border-bottom: 1px solid var(--border); }
 .left-row {
   display: flex; flex-direction: column; justify-content: center; width: 100%;
   border: 0; border-bottom: 1px solid var(--grid); background: none; color: var(--text);
@@ -121,7 +133,17 @@ a { color: var(--link); }
 .slider { display: block; width: calc(100% - 24px); margin: 8px 12px 10px; accent-color: var(--text); cursor: pointer; }
 .empty { padding: 24px; color: var(--muted); text-align: center; margin: 0; }
 
-/* ---------- 詳細（行をタップしたとき） ---------- */
+/* ---------- カーソルを合わせたときの小さな説明 ---------- */
+.tip {
+  position: fixed; z-index: 20; pointer-events: none; max-width: 320px;
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--text); color: var(--bg); border-radius: 6px; padding: 6px 10px;
+  font-size: .8rem; line-height: 1.4; box-shadow: 0 4px 14px rgba(0, 0, 0, .2);
+}
+.tip[hidden] { display: none; }
+.tip-status { opacity: .8; }
+
+/* ---------- 詳細（会社をタップしたとき） ---------- */
 .detail { margin-top: 10px; }
 .card {
   position: relative; background: var(--surface); border: 1px solid var(--border);
@@ -129,7 +151,15 @@ a { color: var(--link); }
 }
 .card .close { position: absolute; top: 8px; right: 8px; }
 .card-company { font-size: .85rem; color: var(--muted); }
-.card-title { font-size: 1.05rem; margin: 0 0 2px; }
+.card-title { font-size: 1.1rem; margin: 0 0 4px; padding-right: 40px; }
+.events { list-style: none; margin: 8px 0 0; padding: 0; }
+.ev { border-left: 4px solid var(--cat, var(--border)); padding: 8px 12px; margin-top: 8px; border-radius: 4px; background: var(--surface-2); }
+.ev.past { opacity: .5; }
+.ev.focus { outline: 2px solid var(--link); }
+.ev-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.ev-cat { font-size: .75rem; color: var(--surface); background: var(--cat); border-radius: 4px; padding: 0 6px; }
+.ev .days { margin-left: auto; font-size: .9rem; }
+.ev.is-next .days, .ev.is-next strong { color: var(--accent); }
 .card p { margin: 2px 0; }
 .days { font-weight: 700; }
 .is-next .days { color: var(--accent); }
@@ -140,7 +170,7 @@ a { color: var(--link); }
 /* ---------- 一番下のタブ ---------- */
 .site-footer { margin-top: 28px; border-top: 1px solid var(--border); background: var(--surface); }
 .info { padding-top: 10px; padding-bottom: 16px; font-size: .85rem; color: var(--muted); }
-.info summary { cursor: pointer; padding: 4px 0; }
+.updated { margin: 0; font-weight: 700; color: var(--text); }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; list-style: none; padding: 0; margin: 12px 0; }
 .legend li { display: inline-flex; align-items: center; gap: 6px; }
 .legend svg { width: 28px; height: 16px; }
