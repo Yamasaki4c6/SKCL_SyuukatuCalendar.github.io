@@ -15,75 +15,48 @@
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
-      <div>
-        <h1>28卒 ゲーム・CG就活カレンダー</h1>
-        <p class="sub">最終更新日：<span id="updated-at">—</span></p>
-      </div>
-      <div class="header-side">
-        <div class="next-box" id="next-box">
-          <span class="next-label">次の締切まで</span>
-          <span class="next-days" id="next-days">—</span>
-          <span class="next-what" id="next-what"></span>
-        </div>
-        <button type="button" class="theme-btn" id="theme-btn" aria-label="表示テーマを切り替え">表示：自動</button>
-      </div>
+      <h1>28卒 ゲーム・CG就活カレンダー</h1>
+      <p class="next" id="next-box"></p>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- 絞り込み -->
-    <section class="filters" aria-label="絞り込み">
-      <fieldset class="filter-group">
-        <legend>カテゴリ</legend>
-        <div id="category-filters" class="chips"></div>
-      </fieldset>
-      <label class="filter-group">
-        <span class="filter-title">職種</span>
-        <select id="role-filter"><option value="">すべての職種</option></select>
-      </label>
-      <div class="filter-group toggles">
-        <label><input type="checkbox" id="houdini-filter"> Houdini明示ありのみ</label>
-        <label><input type="checkbox" id="hide-past"> 締切済みを隠す</label>
-      </div>
-    </section>
-
-    <!-- 表示期間の移動 -->
-    <nav class="range-nav" aria-label="表示期間">
-      <button type="button" id="prev-btn">◀ 前の月</button>
-      <span id="range-label" class="range-label"></span>
-      <button type="button" id="today-btn">今日へ</button>
-      <button type="button" id="next-btn">次の月 ▶</button>
-    </nav>
+    <!-- 職種の切り替え・締切済みを隠す・今日へ -->
+    <div class="toolbar">
+      <div id="role-filters" class="chips" role="group" aria-label="職種"></div>
+      <label class="toggle"><input type="checkbox" id="hide-past"> 締切済みを隠す</label>
+      <button type="button" id="today-btn" class="btn">今日へ</button>
+    </div>
 
     <p id="message" class="message" hidden></p>
 
-    <!-- PC向け：タイムライン（app.js がSVGを描く） -->
-    <section class="timeline-view" aria-label="タイムライン">
-      <div id="timeline" class="timeline"></div>
-      <div id="detail" class="detail" hidden></div>
+    <!-- タイムライン：左に会社名（タップで開閉）、右に週ごとの目盛り。横にスクロールできる -->
+    <section class="chart" aria-label="タイムライン">
+      <div class="chart-scroll" id="chart-scroll">
+        <div class="chart-inner">
+          <div class="left-col" id="left-col"></div>
+          <div id="chart-area"></div>
+        </div>
+      </div>
+      <input type="range" id="slider" class="slider" min="0" max="0" value="0" aria-label="表示する時期を左右に移動">
     </section>
 
-    <!-- スマホ向け：カード一覧 -->
-    <section class="list-view" aria-label="日付順の一覧">
-      <div id="card-list" class="cards"></div>
-    </section>
-
-    <!-- 凡例 -->
-    <section class="legend" aria-label="凡例">
-      <h2>凡例</h2>
-      <ul id="legend"></ul>
-    </section>
-
-    <!-- 受付中・締切未定 -->
-    <section class="open-section">
-      <h2>受付中・締切未定</h2>
-      <div id="open-list" class="cards"></div>
-    </section>
+    <!-- 締切の行をタップしたときの詳細 -->
+    <div id="detail" class="detail" hidden></div>
   </main>
 
-  <footer class="wrap site-footer">
-    <p>日程は変わることがあります。応募前に必ず各社の公式ページで確認してください。</p>
-    <p>⚠ の付いた項目は「要再確認」または「前年実績からの推測」です。</p>
+  <!-- 一番下：最終更新日・凡例・注意事項・表示テーマ -->
+  <footer class="site-footer">
+    <details class="wrap info">
+      <summary>最終更新 <span id="updated-at">—</span>・凡例と注意事項</summary>
+      <ul class="legend" id="legend"></ul>
+      <ul class="notes">
+        <li>日程は変わることがあります。応募前に必ず各社の公式ページで確認してください。</li>
+        <li>⚠ の付いた項目は「要再確認」または「前年実績からの推測」です。</li>
+        <li>日付・残り日数は日本時間で計算しています。</li>
+      </ul>
+      <button type="button" class="btn" id="theme-btn">表示：自動</button>
+    </details>
   </footer>
 
   <script src="app.js"></script>
