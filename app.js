@@ -12,12 +12,17 @@
   // ===== 設定 =====
   var DATA_URL = "data/schedule.json";
   var ROLES = ["デザイン", "TA", "プログラマー"];   // 職種の切り替えボタン
+  // 予定の種類（category）と色。data/schedule.json の category はこの中から選ぶ
   var CATEGORY_COLOR = {
+    "説明会": "var(--cat-seminar)",
     "インターン": "var(--cat-intern)",
+    "早期選考": "var(--cat-early)",
     "本選考": "var(--cat-main)",
     "イベント": "var(--cat-event)",
     "サークル": "var(--cat-circle)"
   };
+  var KINDS = ["deadline", "span", "event", "open"];
+  var CONFIDENCES = ["確定", "要再確認", "前年実績からの推測"];
   var WEEK_W = 56;        // 1週間の幅（px）。スマホ幅では setWeekWidth() で狭くする
   var HEAD_H = 50;        // 目盛りの高さ
   var COMPANY_H = 48;     // 会社の行の高さ
@@ -139,7 +144,7 @@
       it.roles && it.roles.length ? "職種：" + it.roles.join("・") : "",
       it.note ? "補足：" + it.note : "",
       isUnsure(it) ? "※" + it.confidence : "",
-      "公式：" + it.url
+      it.url ? "公式：" + it.url : ""
     ].filter(Boolean).join("\n");
     return "https://calendar.google.com/calendar/render?action=TEMPLATE" +
       "&text=" + encodeURIComponent("【" + it.company + "】" + it.title) +
@@ -164,8 +169,8 @@
   function groupByCompany(items) {
     var map = {}, list = [];
     items.forEach(function (it) {
-      if (!map[it.company]) { map[it.company] = { name: it.company, items: [] }; list.push(map[it.company]); }
-      map[it.company].items.push(it);
+      if (!map[it.companyId]) { map[it.companyId] = { name: it.company, items: [] }; list.push(map[it.companyId]); }
+      map[it.companyId].items.push(it);
     });
     list.forEach(function (g) {
       g.items.sort(function (a, b) { return sortKey(a) - sortKey(b); });
@@ -385,7 +390,7 @@
     if (isUnsure(it)) card.appendChild(el("p", { "class": "warn" }, "⚠ " + it.confidence));
     if (it.note) card.appendChild(el("p", { "class": "note" }, it.note));
     var links = el("div", { "class": "links" });
-    links.appendChild(el("a", { href: it.url, target: "_blank", rel: "noopener" }, "公式ページ ↗"));
+    if (it.url) links.appendChild(el("a", { href: it.url, target: "_blank", rel: "noopener" }, "公式ページ ↗"));
     links.appendChild(el("a", { href: gcalUrl(it), target: "_blank", rel: "noopener" }, "Googleカレンダーに追加"));
     card.appendChild(links);
     box.appendChild(card);
@@ -500,6 +505,51 @@
     apply();
   }
 
+  // ===== データの読み込みとチェック =====
+  // companies（会社）と events（予定）をつなぎ、書き間違いがあればその予定だけ外して画面上部に知らせる
+  function normalize(json) {
+    var problems = [], companies = {}, ids = {}, items = [];
+    var dateRe = /^\d{4}-\d{2}-\d{2}$/, timeRe = /^\d{1,2}:\d{2}$/;
+    (json.companies || []).forEach(function (c) {
+      if (!c || !c.id || !c.name) { problems.push("会社に id か name がない項目があります"); return; }
+      if (companies[c.id]) problems.push("会社の id が重複しています：" + c.id);
+      companies[c.id] = c;
+    });
+    (json.events || []).forEach(function (ev, i) {
+      var label = (ev && ev.id) || ("events の " + (i + 1) + " 件目");
+      var errs = [];
+      if (!ev || !ev.id) errs.push("id がない");
+      else if (ids[ev.id]) errs.push("id が重複");
+      if (!ev || !companies[ev.company]) errs.push("company「" + (ev && ev.company) + "」が companies にない");
+      if (ev && KINDS.indexOf(ev.kind) < 0) errs.push("kind「" + ev.kind + "」が不正");
+      if (ev && !CATEGORY_COLOR[ev.category]) errs.push("category「" + ev.category + "」が不正");
+      if (ev && ev.kind !== "open" && !dateRe.test(ev.start || "")) errs.push("start の日付が不正");
+      if (ev && ev.start && !dateRe.test(ev.start)) errs.push("start の日付が不正");
+      if (ev && ev.end && !dateRe.test(ev.end)) errs.push("end の日付が不正");
+      if (ev && dateRe.test(ev.start || "") && dateRe.test(ev.end || "") && ev.end < ev.start) errs.push("end が start より前");
+      if (ev && ev.time && !timeRe.test(ev.time)) errs.push("time の書き方が不正");
+      if (ev && ev.confidence && CONFIDENCES.indexOf(ev.confidence) < 0) errs.push("confidence「" + ev.confidence + "」が不正");
+      if (errs.length) { problems.push(label + "：" + errs.filter(function (e, k, a) { return a.indexOf(e) === k; }).join("、")); return; }
+      ids[ev.id] = true;
+      var c = companies[ev.company];
+      var it = {};
+      Object.keys(ev).forEach(function (k) { it[k] = ev[k]; });
+      it.companyId = c.id;
+      it.company = c.name;
+      it.url = ev.url || c.url || "";
+      it.roles = ev.roles || [];
+      it.confidence = ev.confidence || "確定";
+      items.push(it);
+    });
+    if (problems.length) {
+      var m = document.getElementById("message");
+      m.textContent = "data/schedule.json に書き間違いがあり、次の予定を表示していません：" + problems.join(" ／ ");
+      m.hidden = false;
+      if (window.console) console.warn("schedule.json の問題:", problems);
+    }
+    return { updated_at: json.updated_at || "", items: items };
+  }
+
   // ===== 起動 =====
   setupTheme();
   drawLegend();
@@ -507,8 +557,7 @@
   fetch(DATA_URL, { cache: "no-cache" })
     .then(function (res) { if (!res.ok) throw new Error(res.status); return res.json(); })
     .then(function (json) {
-      data = json;
-      data.items = (data.items || []).filter(function (it) { return it && it.id; });
+      data = normalize(json);
       document.getElementById("updated-at").textContent = data.updated_at ? data.updated_at.replace(/-/g, "/") : "—";
       setupFilters();
       render();

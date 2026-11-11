@@ -1,19 +1,27 @@
 {
   "updated_at": "2026-11-11",
-  "items": [
+
+  "companies": [
+    {"id": "cygames", "name": "Cygames"},
+    {"id": "polyphony", "name": "ポリフォニー・デジタル"},
+    {"id": "nintendo", "name": "任天堂"},
+    {"id": "gamefreak", "name": "ゲームフリーク"},
+    {"id": "capcom", "name": "カプコン", "url": "https://www.capcom.co.jp/recruit/"},
+    {"id": "fromsoftware", "name": "フロム・ソフトウェア", "url": "https://careers.fromsoftware.jp/jp/newgraduates.html"},
+    {"id": "cc2", "name": "サイバーコネクトツー"}
+  ],
+
+  "events": [
     {
       "id": "cygames-winter-1st",
-      "company": "Cygames",
+      "company": "cygames",
+      "category": "インターン",
       "title": "冬インターン 第1次締切",
       "kind": "deadline",
       "start": "2026-11-27",
       "end": "2026-11-27",
       "time": "10:00",
-      "category": "インターン",
-      "roles": [
-        "デザイン",
-        "TA"
-      ],
+      "roles": ["デザイン", "TA"],
       "note": "TA・3DCGほか",
       "url": "https://fresh.cygames.co.jp/internship/designer/",
       "source": "https://fresh.cygames.co.jp/internship/designer/",
@@ -22,17 +30,14 @@
     },
     {
       "id": "cygames-winter-2nd",
-      "company": "Cygames",
+      "company": "cygames",
+      "category": "インターン",
       "title": "冬インターン 第2次締切",
       "kind": "deadline",
       "start": "2026-12-24",
       "end": "2026-12-24",
       "time": "10:00",
-      "category": "インターン",
-      "roles": [
-        "デザイン",
-        "TA"
-      ],
+      "roles": ["デザイン", "TA"],
       "note": "TA・3DCGほか",
       "url": "https://fresh.cygames.co.jp/internship/designer/",
       "source": "https://fresh.cygames.co.jp/internship/designer/",
@@ -41,15 +46,13 @@
     },
     {
       "id": "polyphony-spring-apply",
-      "company": "ポリフォニー・デジタル",
+      "company": "polyphony",
+      "category": "インターン",
       "title": "春期インターン 応募期間",
       "kind": "span",
       "start": "2026-11-01",
       "end": "2026-12-31",
-      "category": "インターン",
-      "roles": [
-        "デザイン"
-      ],
+      "roles": ["デザイン"],
       "note": "CGアーティスト職",
       "url": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
       "source": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
@@ -58,15 +61,13 @@
     },
     {
       "id": "polyphony-spring-program",
-      "company": "ポリフォニー・デジタル",
+      "company": "polyphony",
+      "category": "インターン",
       "title": "春期インターン 実施",
       "kind": "event",
       "start": "2027-02-01",
       "end": "2027-03-31",
-      "category": "インターン",
-      "roles": [
-        "デザイン"
-      ],
+      "roles": ["デザイン"],
       "note": "2〜3月のうち3週間が目安",
       "url": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
       "source": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
@@ -75,16 +76,14 @@
     },
     {
       "id": "nintendo-software-es",
-      "company": "任天堂",
+      "company": "nintendo",
+      "category": "本選考",
       "title": "ソフトウェア制作 ES・作品提出",
       "kind": "span",
       "start": "2027-02-01",
       "end": "2027-03-12",
       "time": "12:00",
-      "category": "本選考",
-      "roles": [
-        "デザイン"
-      ],
+      "roles": ["デザイン"],
       "note": "受付開始 2/1 12:00。CGスペシャリストほか",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
@@ -93,18 +92,14 @@
     },
     {
       "id": "gamefreak-denkousekka",
-      "company": "ゲームフリーク",
+      "company": "gamefreak",
+      "category": "早期選考",
       "title": "でんこうせっか採用 締切",
       "kind": "deadline",
       "start": "2026-11-01",
       "end": "2026-11-01",
       "time": "10:00",
-      "category": "本選考",
-      "roles": [
-        "プログラマー",
-        "TA"
-      ],
-      "note": "",
+      "roles": ["プログラマー", "TA"],
       "url": "https://gaishishukatsu.com/recruiting_info/view/14971",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14971",
       "checked_at": "2026-11-11",
@@ -112,13 +107,11 @@
     },
     {
       "id": "capcom-2028-entry",
-      "company": "カプコン",
+      "company": "capcom",
+      "category": "本選考",
       "title": "2028新卒エントリー",
       "kind": "open",
-      "category": "本選考",
-      "roles": [
-        "TA"
-      ],
+      "roles": ["TA"],
       "note": "TAコースあり",
       "url": "https://www.capcom.co.jp/recruit/",
       "source": "https://www.capcom.co.jp/recruit/",
@@ -127,14 +120,12 @@
     },
     {
       "id": "fromsoftware-2028-entry",
-      "company": "フロム・ソフトウェア",
+      "company": "fromsoftware",
+      "category": "本選考",
       "title": "2028新卒エントリー",
       "kind": "open",
       "start": "2026-10-01",
-      "category": "本選考",
-      "roles": [
-        "TA"
-      ],
+      "roles": ["TA"],
       "note": "TAは2ルートあり",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
@@ -143,16 +134,13 @@
     },
     {
       "id": "cc2-28-artist",
-      "company": "サイバーコネクトツー",
+      "company": "cc2",
+      "category": "本選考",
       "title": "28卒アーティスト 受付終了",
       "kind": "deadline",
       "start": "2028-03-31",
       "end": "2028-03-31",
-      "category": "本選考",
-      "roles": [
-        "デザイン",
-        "TA"
-      ],
+      "roles": ["デザイン", "TA"],
       "note": "アーティスト（TA含む）。開始日の記載なし",
       "url": "https://www.careermap.jp/jobs/354622",
       "source": "https://www.careermap.jp/jobs/354622",

@@ -19,10 +19,12 @@
   --accent-soft: #fdecec;
   --warn: #b25e00;          /* 未確定の印 */
   --link: #1f5fbf;
+  --cat-seminar: #0e8f9c;   /* 説明会 */
   --cat-intern: #2f6fde;    /* インターン */
+  --cat-early: #c2410c;     /* 早期選考 */
   --cat-main: #188a5b;      /* 本選考 */
   --cat-event: #8a4fd6;     /* イベント */
-  --cat-circle: #c2620a;    /* サークル */
+  --cat-circle: #7c7f88;    /* サークル */
   --left-w: 230px;          /* 左の会社名の列の幅 */
   color-scheme: light;
 }
@@ -33,7 +35,7 @@
     --bg: #14161b; --surface: #1c1f26; --surface-2: #252932; --text: #e8eaf0; --muted: #9aa1b0;
     --border: #333844; --grid: #262a33; --today: #ff7a45; --accent: #ff6369; --accent-soft: #3a1f23;
     --warn: #ffb44d; --link: #7fb0ff;
-    --cat-intern: #6b9cff; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #f0a050;
+    --cat-seminar: #3cc4d0; --cat-intern: #6b9cff; --cat-early: #ff8a4c; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #a3a7b1;
     color-scheme: dark;
   }
 }
@@ -42,7 +44,7 @@
   --bg: #14161b; --surface: #1c1f26; --surface-2: #252932; --text: #e8eaf0; --muted: #9aa1b0;
   --border: #333844; --grid: #262a33; --today: #ff7a45; --accent: #ff6369; --accent-soft: #3a1f23;
   --warn: #ffb44d; --link: #7fb0ff;
-  --cat-intern: #6b9cff; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #f0a050;
+  --cat-seminar: #3cc4d0; --cat-intern: #6b9cff; --cat-early: #ff8a4c; --cat-main: #3fc28a; --cat-event: #b48cff; --cat-circle: #a3a7b1;
   color-scheme: dark;
 }
 
