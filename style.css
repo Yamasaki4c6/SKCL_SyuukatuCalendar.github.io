@@ -117,6 +117,10 @@ a { color: var(--link); }
   font: inherit; text-align: left; padding: 0 12px; cursor: pointer; overflow: hidden;
 }
 .left-row:hover, .left-row.selected { background: var(--surface-2); }
+.left-section {
+  display: flex; align-items: center; padding: 0 12px; font-size: .75rem; font-weight: 700; color: var(--muted);
+  background: var(--surface-2); border-bottom: 1px solid var(--grid); letter-spacing: .05em;
+}
 .left-row.company { font-weight: 700; font-size: .95rem; flex-direction: row; align-items: center; justify-content: flex-start; gap: 6px; }
 .left-row.company .arrow { color: var(--muted); font-size: .7rem; transition: transform .15s; flex: none; }
 .left-row.company[aria-expanded="true"] .arrow { transform: rotate(90deg); }
@@ -165,6 +169,10 @@ a { color: var(--link); }
 .is-next .days { color: var(--accent); }
 .warn { color: var(--warn); font-size: .85rem; }
 .note { color: var(--muted); font-size: .9rem; }
+.co-info { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 6px 0; font-size: .88rem; }
+.co-info dt { color: var(--muted); }
+.co-info dd { margin: 0; }
+@media (max-width: 760px) { .co-info { grid-template-columns: 1fr; } .co-info dd { margin-bottom: 4px; } }
 .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 6px; font-size: .9rem; }
 
 /* ---------- 一番下のタブ ---------- */
