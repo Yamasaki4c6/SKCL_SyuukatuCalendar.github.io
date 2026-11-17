@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-11-11",
+  "updated_at": "2026-11-17",
 
   "companies": [
-    {"id": "nintendo", "name": "任天堂", "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html", "type": "任天堂グループ", "location": "京都・東京", "status": "2028年度の募集要項・選考日程を公開済み", "next": "デザイン系ソフトウェア制作 ES・作品提出 2027/2/1〜3/12", "roles_note": "ソフトウェア制作（ステージ/キャラクター/UI・UX/エフェクト/カットシーン/CGスペシャリスト）、アートワーク（3DCGモデリング）", "rank": "A"},
+    {"id": "nintendo", "name": "任天堂", "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html", "type": "任天堂グループ", "location": "京都・東京", "status": "2028年度の募集要項・選考日程を公開済み", "next": "デザイン系オンラインセミナー 12/2〜（申込は先着順）、デザイン系ソフトウェア制作 ES・作品提出 2027/2/1〜3/12", "roles_note": "ソフトウェア制作（ステージ/キャラクター/UI・UX/エフェクト/カットシーン/CGスペシャリスト）、アートワーク（3DCGモデリング）", "rank": "A"},
     {"id": "gamefreak", "name": "ゲームフリーク", "url": "https://gaishishukatsu.com/recruiting_info/view/14971", "type": "任天堂系（ポケモン原著作権者）", "location": "東京", "status": "でんこうせっか採用（早期：プランナー/PM/プログラマ・TA）は11/1締切", "next": "PMインターン 11/28", "roles_note": "プログラマ・テクニカルアーティスト、グラフィック系", "rank": "A"},
     {"id": "creatures", "name": "クリーチャーズ", "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/", "type": "任天堂系（ポケモン原著作権者）", "location": "東京", "status": "本選考の書類受付中（11/4〜12/14 18:00）", "next": "職種別説明会 11/24・11/26・12/1・12/2", "roles_note": "28卒募集はプログラマ/AI/ポケカ開発/コーポレート（3DCG職の掲載なし）", "rank": "A"},
     {"id": "pokemon", "name": "株式会社ポケモン", "url": "https://recruit.pokemon.co.jp/saiyo/recruit/entry.html", "type": "任天堂系", "location": "東京（六本木）", "status": "28卒は未発表", "next": "27卒はデザイナー締切2026/3/16→28卒は2027年3月中旬と推定", "roles_note": "デザイナー職（3DCG）", "rank": "B"},
@@ -13,7 +13,7 @@
     {"id": "1-up-studio", "name": "1-UPスタジオ", "url": "https://office.nanzan-u.ac.jp/CAREER/event/item/2610_PGO_A4flyer.pdf", "type": "任天堂系", "location": "東京", "status": "クリ博ゲームプログラマー選考会（28卒Vol.1）参加、フォーラム2026出展", "next": "要確認", "roles_note": "—", "rank": "C"},
     {"id": "nintendo-pictures", "name": "ニンテンドーピクチャーズ", "url": "https://cgworld.jp/flashnews/2601-pfo3.html", "type": "任天堂系（CGアニメ）", "location": "東京", "status": "クリ博ポートフォリオ選考会（27卒3月）参加", "next": "要確認", "roles_note": "—", "rank": "C"},
     {"id": "capcom", "name": "カプコン", "url": "https://www.capcom.co.jp/recruit/news.html", "type": "コンシューマー大手", "location": "大阪・東京", "status": "28卒は公式未告知（2026/11/11時点）", "next": "エントリー開始は2026/12/1前後と推定、CGC2027エントリー〆11/30", "roles_note": "アーティスト", "rank": "B"},
-    {"id": "fromsoftware", "name": "フロム・ソフトウェア", "url": "https://careers.fromsoftware.jp/jp/newgraduates.html", "type": "コンシューマー大手", "location": "東京・福岡", "status": "2028新卒エントリー受付中（10/1〜）", "next": "ポートフォリオ相談会（エントリー者向け）、作品提出は毎月25日締切（要確認）", "roles_note": "デザイナー/3Dグラフィックアーティスト/モーション/リギング/シネマティック/テクニカルアーティスト", "rank": "A"},
+    {"id": "fromsoftware", "name": "フロム・ソフトウェア", "url": "https://careers.fromsoftware.jp/jp/newgraduates.html", "type": "コンシューマー大手", "location": "東京・福岡", "status": "2028新卒エントリー受付中（10/1〜）", "next": "ポートフォリオ相談会 応募締切 11/29 23:59（開催 12/16）", "roles_note": "デザイナー/3Dグラフィックアーティスト/モーション/リギング/シネマティック/テクニカルアーティスト", "rank": "A"},
     {"id": "square-enix", "name": "スクウェア・エニックス", "url": "https://www.jp.square-enix.com/recruit/fresh/recruitment/", "type": "コンシューマー大手", "location": "東京", "status": "アーティスト職の本選考は未開始", "next": "エントリー開始は2027年2月上旬と推定", "roles_note": "アーティスト職（2D/3DCG）、テクニカルアーティスト職", "rank": "B"},
     {"id": "bandainamco-studios", "name": "バンダイナムコスタジオ", "url": "https://www.bandainamcostudios.com/recruit/graduate/academy", "type": "コンシューマー大手", "location": "東京", "status": "冬インターン・ワークショップの受付は11/15まで", "next": "冬IS 12/5〜1/22、本選考は12/1前後と推定", "roles_note": "ビジュアルアーティスト（キャラ/背景/エフェクト/コンセプト/UI/映像）、アニメーター、TA（エンジニア）", "rank": "A"},
     {"id": "sega", "name": "セガ", "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html", "type": "コンシューマー大手", "location": "東京", "status": "2028年新卒エントリー受付中", "next": "デザイナー1dayカレッジ 12/14（〆11/20）・1/14（〆12/17）", "roles_note": "デザイナー（3DCG等）、TA", "rank": "A"},
@@ -114,7 +114,8 @@
     {"id": "kyoto-city", "name": "京都クリエイティブ企業キャリアフォーラム（京都市）", "group": "合同"},
     {"id": "kcrop", "name": "京都府（KCROP）", "group": "合同"},
     {"id": "gff", "name": "GFF（福岡ゲーム産業振興機構）", "group": "合同"},
-    {"id": "polyphony", "name": "ポリフォニー・デジタル"}
+    {"id": "polyphony", "name": "ポリフォニー・デジタル"},
+    {"id": "bandainamco-amusement-lab", "name": "バンダイナムコアミューズメントラボ", "type": "受託開発（アミューズメント・BN系）", "location": "東京", "status": "マイナビ2028に掲載（インターン等）。デザイナー枠は要確認", "rank": "C"}
   ],
 
   "events": [
@@ -162,7 +163,7 @@
       "note": "CGアーティスト職",
       "url": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
       "source": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -177,7 +178,7 @@
       "note": "2〜3月のうち3週間が目安",
       "url": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
       "source": "https://job-boards.greenhouse.io/pdi/jobs/5568685004",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -192,7 +193,7 @@
       "note": "アーティスト（TA含む）。開始日の記載なし。企業DBでは「公式掲載は26・27卒向け、28卒は要確認」",
       "url": "https://www.careermap.jp/jobs/354622",
       "source": "https://www.careermap.jp/jobs/354622",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -208,7 +209,7 @@
       "note": "CFC登録締切9/25 15:00、10月から早期選考",
       "url": "https://gamebiz.jp/news/431370",
       "source": "https://gamebiz.jp/news/431370",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -222,7 +223,7 @@
       "note": "WEB",
       "url": "https://mixigroup-recruit.mixi.co.jp/",
       "source": "https://mixigroup-recruit.mixi.co.jp/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -234,10 +235,10 @@
       "start": "2026-11-01",
       "end": "2027-02-28",
       "roles": ["デザイン"],
-      "note": "推定時期：2026年11月〜2027年2月／オンライン",
+      "note": "推定時期：2026年11月〜2027年2月／オンライン／2026/11/17時点のリクナビ検索では東京版は見当たらず、【大阪/イラストレーター】版（2026年11月〜2027年2月）と【東京/デザイナー職】版（2026年12月〜2027年2月）を掲載",
       "url": "https://job.rikunabi.com/job_search/kw/%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC+%E8%AA%AC%E6%98%8E%E4%BC%9A/",
       "source": "https://job.rikunabi.com/job_search/kw/%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC+%E8%AA%AC%E6%98%8E%E4%BC%9A/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -251,7 +252,7 @@
       "note": "atlus-recruit.snar.jp／職種別の締切は要項で確認",
       "url": "https://www.atlus.co.jp/recruit/",
       "source": "https://www.atlus.co.jp/recruit/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -266,7 +267,7 @@
       "note": "オンライン（Zoomウェビナー）11:30〜／申込は開催2営業日前の18時まで。参加は任意",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -280,7 +281,7 @@
       "note": "オンライン/本社／デザイナー向け『ポートフォリオ完全攻略講座』は全3回・本社実施（キャリタス掲載）",
       "url": "https://gamebiz.jp/news/426929",
       "source": "https://gamebiz.jp/news/426929",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -292,10 +293,10 @@
       "start": "2026-11-01",
       "end": "2027-02-28",
       "roles": ["デザイン", "TA", "プログラマー"],
-      "note": "推定時期：2026年11月〜2027年2月（複数回）／オンライン",
+      "note": "推定時期：2026年11月〜2027年2月（複数回）／オンライン／2026/11/17時点のリクナビ検索1ページ目には見当たらず",
       "url": "https://job.rikunabi.com/job_search/kw/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%8A%E3%83%BC%E8%81%B7/",
       "source": "https://job.rikunabi.com/job_search/kw/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%8A%E3%83%BC%E8%81%B7/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -319,13 +320,13 @@
       "category": "インターン",
       "title": "1dayオープンカンパニー（選考なし）",
       "kind": "event",
-      "start": "2026-10-01",
+      "start": "2026-09-01",
       "end": "2026-12-31",
       "roles": ["デザイン", "TA", "プログラマー"],
-      "note": "推定時期：2026年10月〜12月／本社/オンライン",
+      "note": "推定時期：2026年9月・10月・11月・12月（日付は未掲載）／本社/オンライン",
       "url": "https://job.rikunabi.com/job_search/kw/%E3%82%B2%E3%83%BC%E3%83%A0+%E6%A5%AD%E7%95%8C/",
       "source": "https://job.rikunabi.com/job_search/kw/%E3%82%B2%E3%83%BC%E3%83%A0+%E6%A5%AD%E7%95%8C/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -354,7 +355,7 @@
       "note": "WEB",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -384,7 +385,7 @@
       "roles": ["デザイン", "TA", "プログラマー"],
       "url": "https://www.bandainamcostudios.com/recruit/graduate/academy",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/academy",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -398,22 +399,22 @@
       "roles": ["デザイン", "TA", "プログラマー"],
       "url": "https://www.bandainamcostudios.com/recruit/graduate/academy",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/academy",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
-      "id": "creek-river-ev019",
-      "company": "creek-river",
+      "id": "bandainamco-am-lab-ev019",
+      "company": "bandainamco-amusement-lab",
       "category": "インターン",
       "title": "プロダクトデザイナー職 オープン・カンパニー",
       "kind": "deadline",
       "start": "2026-11-16",
       "end": "2026-11-16",
       "roles": ["デザイン"],
-      "note": "オンライン",
+      "note": "オンライン（開催2026年11月）／締切 11/16／リクナビ検索結果ではバンダイナムコアミューズメントラボの募集として掲載（以前はクリーク・アンド・リバー社として登録していたのを修正）",
       "url": "https://job.rikunabi.com/job_search/indu2-2003/",
       "source": "https://job.rikunabi.com/job_search/indu2-2003/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -429,7 +430,7 @@
       "note": "WEB",
       "url": "https://saiganak.com/ja/event/gff-award2027-announcement/",
       "source": "https://saiganak.com/ja/event/gff-award2027-announcement/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -460,7 +461,7 @@
       "note": "オンライン 13:00〜17:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -475,7 +476,7 @@
       "note": "オンライン 13:00〜17:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -491,7 +492,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -506,7 +507,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -521,7 +522,7 @@
       "note": "オンライン（Zoomウェビナー）15:00〜／申込は開催2営業日前の18時まで。参加は任意",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -536,7 +537,7 @@
       "note": "熊本／首都圏のプロダクション10社が参加予定",
       "url": "https://cgworld.jp/flashnews/02-2610-cc2026.html",
       "source": "https://cgworld.jp/flashnews/02-2610-cc2026.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -548,10 +549,10 @@
       "start": "2026-11-28",
       "end": "2026-11-29",
       "roles": ["デザイン", "プログラマー"],
-      "note": "六本木オフィス（対面）／9/5〜6回は終了。ES締切はタームごと",
+      "note": "六本木オフィス（対面）／9/5〜6回は終了。ES締切はタームごと／応募受付は終了（ES締切 2026/11/1 23:59）",
       "url": "https://paiza.jp/student/job_offers/38797",
       "source": "https://paiza.jp/student/job_offers/38797",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -562,11 +563,12 @@
       "kind": "span",
       "start": "2026-09-14",
       "end": "2026-11-30",
+      "time": "23:59",
       "roles": ["デザイン", "TA", "プログラマー"],
-      "note": "WEB（最優秀賞500万円）／国内の大学・大学院・専門学校に在籍する18歳以上",
+      "note": "WEB（最優秀賞500万円）／国内の大学・大学院・専門学校に在籍する18歳以上／企画書の提出期限 11/30 23:59",
       "url": "https://news.denfaminicogamer.jp/?p=1635945",
       "source": "https://news.denfaminicogamer.jp/?p=1635945",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -595,7 +597,7 @@
       "note": "推定時期：2026年12月／27卒は早期選考2025年10月・通常選考2025年12月に開始",
       "url": "https://gamebiz.jp/news/400970",
       "source": "https://gamebiz.jp/news/400970",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -609,7 +611,7 @@
       "note": "推定時期：2026-12-01前後／WEB／26卒は2024/12/2、27卒は2025/12/1に受付開始。2026/11/11時点で公式ニュースに28卒の告知なし",
       "url": "https://www.capcom.co.jp/recruit/news.html",
       "source": "https://www.capcom.co.jp/recruit/news.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -624,7 +626,7 @@
       "note": "オンライン（Zoomウェビナー）17:30〜／申込は開催2営業日前の18時まで。参加は任意",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -639,7 +641,7 @@
       "note": "推定時期：2026-12-01 23:55前後／オンライン／25卒2023/12/1・26卒2024/12/2・27卒2025/12/1締切。数十社が一斉選考",
       "url": "https://www.kurihaku.jp/direct/event/detail/955/",
       "source": "https://www.kurihaku.jp/direct/event/detail/955/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -650,26 +652,171 @@
       "kind": "open",
       "start": "2026-12-01",
       "roles": ["デザイン", "TA"],
-      "note": "推定時期：2026-12-01前後／WEB／27卒は2025/12/1に募集開始。28卒は『決まり次第HPで案内』と記載",
+      "note": "推定時期：2026-12-01前後／WEB／27卒は2025/12/1に募集開始。28卒は『決まり次第HPで案内』と記載／公式（2026/7/21）：2028年度の募集は決まり次第HPで案内",
       "url": "https://www.bandainamcostudios.com/recruit/graduate/news/18957",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/news/18957",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
       "id": "nintendo-ev039",
       "company": "nintendo",
       "category": "説明会",
-      "title": "デザイン系オンラインセミナー（ソフトウェア制作）",
+      "title": "デザイン系オンラインセミナー（ソフトウェア制作）第1回",
       "kind": "event",
-      "start": "2026-12-01",
-      "end": "2026-12-31",
+      "start": "2026-12-02",
+      "end": "2026-12-02",
+      "time": "16:00",
       "roles": ["デザイン"],
-      "note": "推定時期：2026年12月／オンライン／前年（27卒向け）は2025/12/9・12/13・12/19・12/22開催、先着順。学年不問",
+      "note": "16:00〜17:45／オンライン／先着順／学年不問（28卒以外も参加可）",
       "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
-      "checked_at": "2026-11-11",
-      "confidence": "前年実績からの推測"
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー 第1回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-11-27",
+      "end": "2026-11-27",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 2026-12-02 16:00〜17:45／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-2",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（ソフトウェア制作）第2回",
+      "kind": "event",
+      "start": "2026-12-05",
+      "end": "2026-12-05",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:45／オンライン／先着順／学年不問（28卒以外も参加可）",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-2-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー 第2回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-02",
+      "end": "2026-12-02",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 2026-12-05 16:00〜17:45／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-3",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（ソフトウェア制作）第3回",
+      "kind": "event",
+      "start": "2026-12-11",
+      "end": "2026-12-11",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:45／オンライン／先着順／学年不問（28卒以外も参加可）",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-3-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー 第3回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-08",
+      "end": "2026-12-08",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 2026-12-11 16:00〜17:45／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-4",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（ソフトウェア制作）第4回",
+      "kind": "event",
+      "start": "2026-12-22",
+      "end": "2026-12-22",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:45／オンライン／先着順／学年不問（28卒以外も参加可）",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-4-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー 第4回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-17",
+      "end": "2026-12-17",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 2026-12-22 16:00〜17:45／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-5",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（ソフトウェア制作）第5回",
+      "kind": "event",
+      "start": "2027-01-19",
+      "end": "2027-01-19",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:45／オンライン／先着順／学年不問（28卒以外も参加可）",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-ev039-5-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー 第5回（申込締切）",
+      "kind": "deadline",
+      "start": "2027-01-14",
+      "end": "2027-01-14",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 2027-01-19 16:00〜17:45／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_software.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
     },
     {
       "id": "hal-lab-ev041",
@@ -698,7 +845,7 @@
       "note": "有明セントラルタワーホール＆カンファレンス 12:00〜21:00／無料・事前登録制。告知ページに就職関連コンテンツの記載はなし",
       "url": "https://cgworld.jp/flashnews/cgworld-2026-126.html",
       "source": "https://cgworld.jp/flashnews/cgworld-2026-126.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -713,7 +860,7 @@
       "note": "リクナビ経由",
       "url": "https://job.rikunabi.com/job_descriptions/a574b3dbdad8665c/",
       "source": "https://job.rikunabi.com/job_descriptions/a574b3dbdad8665c/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -744,7 +891,7 @@
       "note": "WEB",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -759,7 +906,7 @@
       "note": "推定時期：2026年12月中旬／オンライン／27卒向けは2025/12/17（VA・アニメーター・サウンド編）、12/23（企画・エンジニア編）",
       "url": "https://www.bandainamcostudios.com/recruit/graduate/news/18957",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/news/18957",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -770,11 +917,28 @@
       "kind": "span",
       "start": "2026-12-15",
       "end": "2027-01-06",
+      "time": "12:00",
       "roles": ["プログラマー"],
       "note": "マイページ（WEB）／録画面接・WEB試験は1/12まで",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-tech-test-1",
+      "company": "nintendo",
+      "category": "本選考",
+      "title": "理工系 第1回 録画面接・WEB試験",
+      "kind": "span",
+      "start": "2026-12-15",
+      "end": "2027-01-12",
+      "time": "23:59",
+      "roles": ["プログラマー"],
+      "note": "受付開始 12:00／ES提出と同じ回に受検",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -790,7 +954,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -805,7 +969,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -816,11 +980,12 @@
       "kind": "span",
       "start": "2026-12-18",
       "end": "2027-01-29",
+      "time": "12:00",
       "roles": ["デザイン"],
       "note": "マイページ（WEB）",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -851,7 +1016,7 @@
       "note": "WEB",
       "url": "https://saiganak.com/ja/event/gff-award2027-announcement/",
       "source": "https://saiganak.com/ja/event/gff-award2027-announcement/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -862,11 +1027,28 @@
       "kind": "span",
       "start": "2027-01-14",
       "end": "2027-01-28",
+      "time": "12:00",
       "roles": ["プログラマー"],
       "note": "マイページ（WEB）／録画面接・WEB試験は2/3まで",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-tech-test-2",
+      "company": "nintendo",
+      "category": "本選考",
+      "title": "理工系 第2回 録画面接・WEB試験",
+      "kind": "span",
+      "start": "2027-01-14",
+      "end": "2027-02-03",
+      "time": "23:59",
+      "roles": ["プログラマー"],
+      "note": "受付開始 12:00／ES提出と同じ回に受検",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -881,7 +1063,7 @@
       "note": "推定時期：2027年1月中旬／オンライン／27卒は2026/1/14締切",
       "url": "https://cgworld.jp/flashnews/2511-27pgo2.html",
       "source": "https://cgworld.jp/flashnews/2511-27pgo2.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -896,7 +1078,7 @@
       "note": "推定時期：2027-01-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -910,7 +1092,7 @@
       "note": "推定時期：2027年2月上旬／マイページ／26卒は2025/2/3〜4/30、27卒は2026/2/1〜（3/31受付終了）。作品提出あり",
       "url": "https://www.jp.square-enix.com/recruit/fresh/recruitment/",
       "source": "https://www.jp.square-enix.com/recruit/fresh/recruitment/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -921,11 +1103,12 @@
       "kind": "span",
       "start": "2027-02-01",
       "end": "2027-03-12",
+      "time": "12:00",
       "roles": ["デザイン"],
       "note": "マイページ（WEB）／2028年度新卒採用の選考日程",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -936,11 +1119,12 @@
       "kind": "span",
       "start": "2027-02-01",
       "end": "2027-03-12",
+      "time": "12:00",
       "roles": ["デザイン"],
       "note": "マイページ（WEB）",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -951,11 +1135,28 @@
       "kind": "span",
       "start": "2027-02-04",
       "end": "2027-02-16",
+      "time": "12:00",
       "roles": ["プログラマー"],
       "note": "マイページ（WEB）／録画面接・WEB試験は2/24まで",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-tech-test-3",
+      "company": "nintendo",
+      "category": "本選考",
+      "title": "理工系 第3回 録画面接・WEB試験",
+      "kind": "span",
+      "start": "2027-02-04",
+      "end": "2027-02-24",
+      "time": "23:59",
+      "roles": ["プログラマー"],
+      "note": "受付開始 12:00／ES提出と同じ回に受検",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -967,10 +1168,10 @@
       "start": "2027-02-06",
       "end": "2027-02-06",
       "roles": ["デザイン", "TA", "プログラマー"],
-      "note": "横浜新都市ホール 13:00〜17:00",
+      "note": "横浜新都市ホール 13:00〜17:00／ページの名称は「就活直前フェア 福祉 横浜会場」（福祉分野向けの可能性）",
       "url": "https://job.mynavi.jp/conts/event/2028/11346/index.html",
       "source": "https://job.mynavi.jp/conts/event/2028/11346/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -985,7 +1186,7 @@
       "note": "推定時期：2027年2月中旬／住友不動産新宿グランドタワー（前回）／27卒は2026/2/14開催",
       "url": "https://www.kurihaku.jp/direct/event/detail/958/",
       "source": "https://www.kurihaku.jp/direct/event/detail/958/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1000,7 +1201,7 @@
       "note": "推定時期：2027年2月下旬／オンライン／27卒向けは2026/2/20・2/26（10:40〜18:00）",
       "url": "https://www.kit.ac.jp/wp/wp-content/uploads/2025/12/shushoku_jobfair_0220_gakujogameit.pdf",
       "source": "https://www.kit.ac.jp/wp/wp-content/uploads/2025/12/shushoku_jobfair_0220_gakujogameit.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1015,7 +1216,7 @@
       "note": "推定時期：2027年2月下旬／オンライン／27卒向けは2026/2/25〜27、スクエニは2/27に出展",
       "url": "https://www.jp.square-enix.com/recruit/fresh/intern/",
       "source": "https://www.jp.square-enix.com/recruit/fresh/intern/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1030,7 +1231,7 @@
       "note": "推定時期：2027-02-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1060,7 +1261,7 @@
       "note": "推定時期：2027-03-01前後／オンライン／27卒は2026/3/2締切（ゲームフリーク/セガ/モノリスソフト/ニンテンドーピクチャーズ等参加）",
       "url": "https://cgworld.jp/flashnews/2601-pfo3.html",
       "source": "https://cgworld.jp/flashnews/2601-pfo3.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1075,7 +1276,7 @@
       "note": "推定時期：2027年3月／前回2026/3/21開催",
       "url": "https://san-tatsu.jp/pressrelease/508724/",
       "source": "https://san-tatsu.jp/pressrelease/508724/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1090,7 +1291,7 @@
       "note": "推定時期：2027-03-01〜03-09／ソニーグループ共通マイページ／27卒は2026/3/1 10:00〜3/9 10:00",
       "url": "https://sie.com/jp/saiyo/newgrad/career-info.html",
       "source": "https://sie.com/jp/saiyo/newgrad/career-info.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1105,7 +1306,7 @@
       "note": "推定時期：2027年3月上旬／オンライン／27卒向けは2026/3/4〜5開催",
       "url": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/01/shushoku_jobfair_260305_vivivit.pdf",
       "source": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/01/shushoku_jobfair_260305_vivivit.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1135,7 +1336,7 @@
       "note": "推定時期：2027年3月／京都／前回2026/3/1（グラフィニカ/トーセ/Skeleton Crew Studio等14社）",
       "url": "https://www.city.kyoto.lg.jp/sankan/cmsfiles/contents/0000349/349360/hodo_0121.pdf",
       "source": "https://www.city.kyoto.lg.jp/sankan/cmsfiles/contents/0000349/349360/hodo_0121.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1150,7 +1351,7 @@
       "note": "推定時期：2027-03-01〜03-15前後／現地＋オンライン録画配信／27卒: エントリー2026/3/1〜3/15、録画配信3/27〜4/3。26卒: 2025/2/28〜3/16",
       "url": "https://shirogumi.com/careers/event-2027",
       "source": "https://shirogumi.com/careers/event-2027",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1180,7 +1381,7 @@
       "note": "幕張メッセ 国際会議場 13:00〜17:00",
       "url": "https://job.mynavi.jp/conts/event/2028/11234/index.html",
       "source": "https://job.mynavi.jp/conts/event/2028/11234/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1195,7 +1396,7 @@
       "note": "推定時期：2027年3月中旬／マイナビ＋マイページ（ポートフォリオ提出）／27卒は2026/3/16 15:00締切",
       "url": "https://recruit.pokemon.co.jp/saiyo/recruit/entry.html",
       "source": "https://recruit.pokemon.co.jp/saiyo/recruit/entry.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1210,7 +1411,7 @@
       "note": "推定時期：2027年3月下旬／梅田（前回）／27卒は2026/3/29開催",
       "url": "https://www.kurihaku.jp/direct/event/detail/963/",
       "source": "https://www.kurihaku.jp/direct/event/detail/963/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1225,7 +1426,7 @@
       "note": "推定時期：2027-03-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1240,7 +1441,7 @@
       "note": "推定時期：2027年春／オンライン/スタジオ／27卒向けに『オンライン会社説明会A』『会社説明会B』を実施",
       "url": "https://cgworld.jp/stnews/10101/1774580735.html",
       "source": "https://cgworld.jp/stnews/10101/1774580735.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1255,7 +1456,7 @@
       "note": "推定時期：2027-04-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1270,7 +1471,7 @@
       "note": "推定時期：2027年5月下旬〜6月上旬／27卒: 申込5/25〜6/10（募集開始は6月上旬）",
       "url": "https://www.marza.com/news/article/161993/",
       "source": "https://www.marza.com/news/article/161993/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1285,7 +1486,7 @@
       "note": "推定時期：2027-05-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1297,10 +1498,10 @@
       "start": "2027-05-25",
       "end": "2027-05-31",
       "roles": ["デザイン", "TA"],
-      "note": "推定時期：2027年5月末／応募フォーム＋自社HP／27卒向けは2026/5/31 23:59締切",
+      "note": "推定時期：2027年5月末／応募フォーム＋自社HP／27卒向けは2026/5/31 23:59締切／2026/11/17時点：公式は「2027年度の新卒採用は終了」、CGWORLDは「新卒採用 募集停止中」。28卒の募集は未発表",
       "url": "https://cgworld.jp/jobs/30441.html",
       "source": "https://cgworld.jp/jobs/30441.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1326,11 +1527,28 @@
       "kind": "span",
       "start": "2027-06-15",
       "end": "2027-07-13",
+      "time": "12:00",
       "roles": ["プログラマー"],
       "note": "マイページ（WEB）／録画面接・WEB試験は7/20まで",
       "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
       "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-tech-test-4",
+      "company": "nintendo",
+      "category": "本選考",
+      "title": "理工系 第4回 録画面接・WEB試験（ゲーム開発系）",
+      "kind": "span",
+      "start": "2027-06-15",
+      "end": "2027-07-20",
+      "time": "23:59",
+      "roles": ["プログラマー"],
+      "note": "受付開始 12:00／ES提出と同じ回に受検",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/process/index.html",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1345,7 +1563,7 @@
       "note": "推定時期：2027-06-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1360,7 +1578,7 @@
       "note": "推定時期：2027-07-01前後／オンライン／27卒は2026/7/1締切",
       "url": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/05/shushoku_list_260701_kurihaku.pdf",
       "source": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/05/shushoku_list_260701_kurihaku.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1375,7 +1593,7 @@
       "note": "推定時期：2027-07-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1390,7 +1608,7 @@
       "note": "推定時期：2027年8月（28卒向け開催は未確認）／WEB／26卒向けは2025/8/1〜8/29（ビー・トライブ/ポノス/ポリゴンマジック/Aiming/IMAGICA GEEQ）",
       "url": "https://prtimes.jp/main/html/rd/p/000000411.000037973.html",
       "source": "https://prtimes.jp/main/html/rd/p/000000411.000037973.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1405,7 +1623,7 @@
       "note": "推定時期：2027-08-25／WEB／公式ページの締切表記は2026年（1/25〜8/25の毎月25日）のまま。28卒向けは2027年の同日程と推定、要確認",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1420,7 +1638,7 @@
       "note": "推定時期：2027-09-01前後／オンライン／27卒は2026/9/1締切",
       "url": "https://cgworld.jp/flashnews/2608-pfo9.html",
       "source": "https://cgworld.jp/flashnews/2608-pfo9.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
     },
     {
@@ -1433,7 +1651,7 @@
       "note": "WEB／デザイナーとエンジニアをつなぐ役割、CG制作ツール開発",
       "url": "https://creek-recruit.snar.jp/index.aspx",
       "source": "https://creek-recruit.snar.jp/index.aspx",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1446,7 +1664,7 @@
       "note": "WEB",
       "url": "https://creek-recruit.snar.jp/index.aspx",
       "source": "https://creek-recruit.snar.jp/index.aspx",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1456,10 +1674,10 @@
       "title": "ゲーム×IT業界フォーラム 福岡",
       "kind": "open",
       "roles": ["デザイン", "TA", "プログラマー"],
-      "note": "日程未発表／福岡（前回エルガーラホール）／27卒向けは2025/11/15開催",
+      "note": "日程未発表／福岡（前回エルガーラホール）／27卒向けは2025/11/15開催／参照ページは27卒向け（2025/11/15）の情報のまま",
       "url": "https://local-syukatsu.mhlw.go.jp/seminar/%e3%82%b2%e3%83%bc%e3%83%a0xit%e6%a5%ad%e7%95%8c%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a9%e3%83%a0",
       "source": "https://local-syukatsu.mhlw.go.jp/seminar/%e3%82%b2%e3%83%bc%e3%83%a0xit%e6%a5%ad%e7%95%8c%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a9%e3%83%a0",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -1472,7 +1690,7 @@
       "note": "WEB",
       "url": "https://colopl.co.jp/recruit/graduate/",
       "source": "https://colopl.co.jp/recruit/graduate/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1498,7 +1716,7 @@
       "note": "WEB",
       "url": "https://www.sega.co.jp/recruit/fresh/",
       "source": "https://www.sega.co.jp/recruit/fresh/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1511,7 +1729,7 @@
       "note": "オンライン／直近はエンジニア向け説明会 2026/11/24 13:00",
       "url": "https://www.team-lab.com/recruit/fresh/3dcg/",
       "source": "https://www.team-lab.com/recruit/fresh/3dcg/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1524,7 +1742,7 @@
       "note": "WEB（選考インターン2週間あり）",
       "url": "https://www.team-lab.com/recruit/fresh/3dcg/",
       "source": "https://www.team-lab.com/recruit/fresh/3dcg/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1532,13 +1750,32 @@
       "company": "fromsoftware",
       "category": "説明会",
       "title": "ポートフォリオ相談会",
-      "kind": "open",
+      "kind": "event",
+      "start": "2026-12-16",
+      "end": "2026-12-16",
+      "time": "15:00",
       "roles": ["デザイン"],
-      "note": "日程未発表／詳細はエントリー者へ案内／2026/11/6に開催決定を告知。日時は未掲載",
+      "note": "15:00開始／東京オフィス（西新宿）・対面のみ、交通費自己負担／提出したポートフォリオに開発者がコメント／応募多数の場合は作品選考あり（合否に関わらず連絡あり）",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-11",
-      "confidence": "要再確認"
+      "source": "エントリー者向け案内メール（2026/11/13）。公式サイトINFORMATION 2026.11.13「ポートフォリオ相談会の応募受付を開始」",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "fromsoftware-ev102-apply",
+      "company": "fromsoftware",
+      "category": "説明会",
+      "title": "ポートフォリオ相談会（応募・作品提出）",
+      "kind": "span",
+      "start": "2026-11-13",
+      "end": "2026-11-29",
+      "time": "23:59",
+      "roles": ["デザイン"],
+      "note": "受付開始 11/13 18:00／締切 11/29 23:59／応募多数の場合は作品選考あり",
+      "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
+      "source": "エントリー者向け案内メール（2026/11/13）。公式サイトINFORMATION 2026.11.13「ポートフォリオ相談会の応募受付を開始」",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
     },
     {
       "id": "platinumgames-ev103",
@@ -1550,7 +1787,7 @@
       "note": "HERP経由／説明会・インターンは現状実施なし",
       "url": "https://herp.careers/v1/pgrecruit/019d9056-3be5-7551-9500-0607ebdcd901",
       "source": "https://herp.careers/v1/pgrecruit/019d9056-3be5-7551-9500-0607ebdcd901",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1560,11 +1797,59 @@
       "title": "28卒エンジニア 説明会",
       "kind": "open",
       "roles": ["プログラマー"],
-      "note": "オンライン／初回は説明会参加",
+      "note": "オンライン／初回は説明会参加／日程は下の個別の予定（随時追加予定、初回は説明会参加必須）",
       "url": "https://paiza.jp/job_offers/39908",
       "source": "https://paiza.jp/job_offers/39908",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
+    },
+    {
+      "id": "polygonmagic-ev104-2",
+      "company": "polygonmagic",
+      "category": "説明会",
+      "title": "28卒エンジニア 説明会（11/24）",
+      "kind": "event",
+      "start": "2026-11-24",
+      "end": "2026-11-24",
+      "time": "15:00",
+      "roles": ["プログラマー"],
+      "note": "セミナー＋説明会 15:00〜17:30／就活サイト（paiza）掲載のみで年の記載なし",
+      "url": "https://paiza.jp/student/job_offers/39908",
+      "source": "https://paiza.jp/student/job_offers/39908",
+      "checked_at": "2026-11-17",
+      "confidence": "要再確認"
+    },
+    {
+      "id": "polygonmagic-ev104-3",
+      "company": "polygonmagic",
+      "category": "説明会",
+      "title": "28卒エンジニア 説明会（11/30）",
+      "kind": "event",
+      "start": "2026-11-30",
+      "end": "2026-11-30",
+      "time": "10:30",
+      "roles": ["プログラマー"],
+      "note": "説明会のみ 10:30開始（30〜45分）／就活サイト（paiza）掲載のみで年の記載なし",
+      "url": "https://paiza.jp/student/job_offers/39908",
+      "source": "https://paiza.jp/student/job_offers/39908",
+      "checked_at": "2026-11-17",
+      "confidence": "要再確認"
+    },
+    {
+      "id": "polygonmagic-ev104-4",
+      "company": "polygonmagic",
+      "category": "説明会",
+      "title": "28卒エンジニア 説明会（01/19）",
+      "kind": "event",
+      "start": "2027-01-19",
+      "end": "2027-01-19",
+      "time": "15:00",
+      "roles": ["プログラマー"],
+      "note": "セミナー＋説明会 15:00〜17:30／就活サイト（paiza）掲載のみで年の記載なし",
+      "url": "https://paiza.jp/student/job_offers/39908",
+      "source": "https://paiza.jp/student/job_offers/39908",
+      "checked_at": "2026-11-17",
+      "confidence": "要再確認"
     },
     {
       "id": "marvelous-ev105",
@@ -1576,7 +1861,7 @@
       "note": "WEB／2028インターンシップも掲載",
       "url": "https://www.marv.jp/career/s/",
       "source": "https://www.marv.jp/career/s/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1592,7 +1877,7 @@
       "note": "京都経済センター",
       "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33021",
       "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33021",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1607,7 +1892,7 @@
       "note": "京都経済センター",
       "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33021",
       "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33021",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1622,7 +1907,7 @@
       "note": "会場開催／MIXI等が出展",
       "url": "https://design-note.mixi.co.jp/n/n17037b52b6b9?gs=e8b334ba3abd",
       "source": "https://design-note.mixi.co.jp/n/n17037b52b6b9?gs=e8b334ba3abd",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1637,7 +1922,7 @@
       "note": "東京都立産業貿易センター浜松町館 10:00〜17:40／出展: アークシステムワークス/アトラス/コーエーテクモ/コナミ/サイバーエージェント/シフォン/セガ/マーベラス/ラセングル/Aiming。次回は未発表",
       "url": "https://koubo.jp/article/77953",
       "source": "https://koubo.jp/article/77953",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1653,7 +1938,7 @@
       "note": "オンライン 14:00〜15:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/seminar_dsn01.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/seminar_dsn01.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1665,10 +1950,10 @@
       "start": "2026-07-01",
       "end": "2026-09-30",
       "roles": ["デザイン"],
-      "note": "推定時期：2026年7月〜9月下旬／東京（2週間〜2ヶ月）／報酬・交通費支給",
+      "note": "推定時期：2026年7月〜9月下旬／東京（2週間〜2ヶ月）／報酬・交通費支給／リクナビ検索結果では「2026年10月5日〜10日」と表示（未確認）",
       "url": "https://job.rikunabi.com/job_descriptions/7e1a2c49d0e824d8/",
       "source": "https://job.rikunabi.com/job_descriptions/7e1a2c49d0e824d8/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "要再確認"
     },
     {
@@ -1713,7 +1998,7 @@
       "note": "オンライン 13:00〜18:00",
       "url": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/07/shushoku_jobfair_260725_kyotohu.pdf",
       "source": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/07/shushoku_jobfair_260725_kyotohu.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1728,7 +2013,7 @@
       "note": "WEB／バンダイナムコスタジオ/サイバーコネクトツー等9社が審査",
       "url": "https://www.gamebusiness.jp/article/2026/06/01/27084.html",
       "source": "https://www.gamebusiness.jp/article/2026/06/01/27084.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1759,7 +2044,7 @@
       "note": "1対1相談（約30分）",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1774,7 +2059,7 @@
       "note": "1対1相談（約30分）",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1790,7 +2075,7 @@
       "note": "オンライン 18:30〜20:00",
       "url": "https://gaishishukatsu.com/recruiting_info/view/14969",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14969",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1805,7 +2090,7 @@
       "note": "オンライン 18:30〜20:00",
       "url": "https://gaishishukatsu.com/recruiting_info/view/14969",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14969",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1821,7 +2106,7 @@
       "note": "1対1相談（約30分）",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1836,7 +2121,7 @@
       "note": "1対1相談（約30分）",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn01.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1852,7 +2137,7 @@
       "note": "WEB",
       "url": "https://gaishishukatsu.com/recruiting_info/view/14810",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14810",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1868,7 +2153,7 @@
       "note": "オンライン 18:30〜20:00",
       "url": "https://gaishishukatsu.com/recruiting_info/view/14969",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14969",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1883,7 +2168,7 @@
       "note": "オンライン 18:30〜20:00",
       "url": "https://gaishishukatsu.com/recruiting_info/view/14969",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14969",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1899,7 +2184,7 @@
       "note": "開催日は7/31・9/11",
       "url": "https://www.bandainamcostudios.com/recruit/graduate/academy",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/academy",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1914,7 +2199,7 @@
       "note": "開催日は7/31・9/11",
       "url": "https://www.bandainamcostudios.com/recruit/graduate/academy",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/academy",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1930,7 +2215,7 @@
       "note": "DAY1オンライン/DAY2 Abema Towers／エフェクトDAY1 8/27、モデリング・モーションDAY1 9/2、全コースDAY2 9/12",
       "url": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33438",
       "source": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33438",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1945,7 +2230,7 @@
       "note": "DAY1オンライン/DAY2 Abema Towers／エフェクトDAY1 8/27、モデリング・モーションDAY1 9/2、全コースDAY2 9/12",
       "url": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33438",
       "source": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33438",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1960,7 +2245,7 @@
       "note": "梅田センタービル 11:00〜17:00",
       "url": "https://www.cri.co.jp/news_pdf/20260903_press_game_IT_forum2026_osaka.pdf",
       "source": "https://www.cri.co.jp/news_pdf/20260903_press_game_IT_forum2026_osaka.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1976,7 +2261,7 @@
       "note": "オリエン オンライン/DAY1・2 Abema Towers／オリエン9/18、DAY1 9/26、DAY2 9/27",
       "url": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33483",
       "source": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33483",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -1985,13 +2270,13 @@
       "category": "インターン",
       "title": "コンセプトアートをテーマにしたゲームクリエイティブインターンシップ",
       "kind": "event",
-      "start": "2026-09-18",
+      "start": "2026-09-14",
       "end": "2026-09-27",
       "roles": ["デザイン"],
-      "note": "オリエン オンライン/DAY1・2 Abema Towers／オリエン9/18、DAY1 9/26、DAY2 9/27",
+      "note": "オリエン オンライン/DAY1・2 Abema Towers／オリエン9/14（9/18から変更）、DAY1 9/26、DAY2 9/27",
       "url": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33483",
       "source": "https://www.cyberagent.co.jp/careers/students/event/detail/id=33483",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2019,10 +2304,58 @@
       "start": "2026-09-30",
       "end": "2026-09-30",
       "roles": ["デザイン"],
-      "note": "オンライン（Zoomウェビナー）14:00〜15:00",
+      "note": "オンライン（Zoomウェビナー）14:00〜15:00／2026/11/17時点の公式ページには9/30回の記載がなく、10/19・11/27回が掲載",
       "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
       "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "cyberagent-ev127-2",
+      "company": "cyberagent",
+      "category": "説明会",
+      "title": "ゲームクリエイター キャリアガイダンス（10/19回）",
+      "kind": "event",
+      "start": "2026-10-19",
+      "end": "2026-10-19",
+      "time": "17:00",
+      "roles": ["デザイン"],
+      "note": "17:00〜18:00／申込締切 10/16 10:00",
+      "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
+      "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "cyberagent-ev127-3-apply",
+      "company": "cyberagent",
+      "category": "説明会",
+      "title": "ゲームクリエイター キャリアガイダンス 11/27回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-11-26",
+      "end": "2026-11-26",
+      "time": "10:00",
+      "roles": ["デザイン"],
+      "note": "開催 11/27 17:00〜18:00",
+      "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
+      "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "cyberagent-ev127-3",
+      "company": "cyberagent",
+      "category": "説明会",
+      "title": "ゲームクリエイター キャリアガイダンス（11/27回）",
+      "kind": "event",
+      "start": "2026-11-27",
+      "end": "2026-11-27",
+      "time": "17:00",
+      "roles": ["デザイン"],
+      "note": "17:00〜18:00",
+      "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
+      "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33777",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2037,7 +2370,7 @@
       "note": "オンライン／参加: 1-UPスタジオ/exsa/IMAGICA GEEQ/KEYクリエーション/アングー/ガンバリオン等",
       "url": "https://office.nanzan-u.ac.jp/CAREER/event/item/2610_PGO_A4flyer.pdf",
       "source": "https://office.nanzan-u.ac.jp/CAREER/event/item/2610_PGO_A4flyer.pdf",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2053,7 +2386,7 @@
       "note": "オンライン 13:00〜17:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2068,7 +2401,7 @@
       "note": "オンライン 13:00〜17:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2098,7 +2431,7 @@
       "note": "ベルサール渋谷ファーストB1 11:00〜17:00／カプコン/スクエニ/コナミ/セガ/ニンテンドーキューブ/バンナムスタジオ等",
       "url": "https://www.gamespark.jp/release/prtimes/20260907/312350.html",
       "source": "https://www.gamespark.jp/release/prtimes/20260907/312350.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2128,7 +2461,7 @@
       "note": "Zoom 18:30〜20:00",
       "url": "https://www.kurihaku.jp/direct/event/detail/974",
       "source": "https://www.kurihaku.jp/direct/event/detail/974",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2157,7 +2490,7 @@
       "roles": ["プログラマー"],
       "url": "https://www.jp.square-enix.com/recruit/fresh/",
       "source": "https://www.jp.square-enix.com/recruit/fresh/",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2173,7 +2506,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2188,7 +2521,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2204,7 +2537,7 @@
       "note": "オンライン",
       "url": "https://gaishishukatsu.com/recruiting_info/view/14971",
       "source": "https://gaishishukatsu.com/recruiting_info/view/14971",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2219,7 +2552,7 @@
       "note": "対面（3日間）",
       "url": "https://www.jp.square-enix.com/recruit/fresh/intern/2026/09/018407.html",
       "source": "https://www.jp.square-enix.com/recruit/fresh/intern/2026/09/018407.html",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2235,7 +2568,7 @@
       "note": "オンライン（Zoom）17:00〜19:00",
       "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33853",
       "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33853",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2250,7 +2583,7 @@
       "note": "オンライン（Zoom）17:00〜19:00",
       "url": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33853",
       "source": "https://www.cyberagent.co.jp/careers/students/career_event/detail/id=33853",
-      "checked_at": "2026-11-11",
+      "checked_at": "2026-11-17",
       "confidence": "確定"
     },
     {
@@ -2259,14 +2592,29 @@
       "category": "インターン",
       "title": "28卒向け夏季仕事体験（アーティスト：キャラモデル/背景モデル/アニメーション）",
       "kind": "event",
-      "start": "2026-07-01",
-      "end": "2026-09-30",
+      "start": "2026-08-18",
+      "end": "2026-08-24",
       "roles": ["デザイン"],
-      "note": "オンライン（マイナビ2028）／2026年夏に実施",
+      "note": "アーティストは8/18・8/21・8/24の3日間（10:00〜17:00、全日参加）／マイナビ2028からエントリー",
       "url": "https://www.ganbarion.co.jp/topics/2569/",
       "source": "https://www.ganbarion.co.jp/topics/2569/",
-      "checked_at": "2026-11-11",
-      "confidence": "要再確認"
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "ganbarion-ev143-apply",
+      "company": "ganbarion",
+      "category": "インターン",
+      "title": "28卒向け夏季仕事体験（エントリー締切）",
+      "kind": "deadline",
+      "start": "2026-07-15",
+      "end": "2026-07-15",
+      "roles": ["デザイン"],
+      "note": "マイナビ2028からエントリー／結果は7/24までに連絡",
+      "url": "https://www.ganbarion.co.jp/topics/2569/",
+      "source": "https://www.ganbarion.co.jp/topics/2569/",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
     },
     {
       "id": "cygames-winter-program",
