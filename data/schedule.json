@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-23",
 
   "companies": [
     {"id": "nintendo", "name": "任天堂", "url": "https://www.nintendo.co.jp/jobs/recruit/process/index.html", "type": "任天堂グループ", "location": "京都・東京", "status": "2028年度の募集要項・選考日程を公開済み", "next": "デザイン系オンラインセミナー 12/2〜（申込は先着順）、デザイン系ソフトウェア制作 ES・作品提出 2027/2/1〜3/12", "roles_note": "ソフトウェア制作（ステージ/キャラクター/UI・UX/エフェクト/カットシーン/CGスペシャリスト）、アートワーク（3DCGモデリング）", "rank": "A"},
@@ -16,7 +16,7 @@
     {"id": "fromsoftware", "name": "フロム・ソフトウェア", "url": "https://careers.fromsoftware.jp/jp/newgraduates.html", "type": "コンシューマー大手", "location": "東京・福岡", "status": "2028新卒エントリー受付中（10/1〜）", "next": "ポートフォリオ相談会 応募締切 11/29 23:59（開催 12/16）", "roles_note": "デザイナー/3Dグラフィックアーティスト/モーション/リギング/シネマティック/テクニカルアーティスト", "rank": "A"},
     {"id": "square-enix", "name": "スクウェア・エニックス", "url": "https://www.jp.square-enix.com/recruit/fresh/recruitment/", "type": "コンシューマー大手", "location": "東京", "status": "アーティスト職の本選考は未開始", "next": "エントリー開始は2027年2月上旬と推定", "roles_note": "アーティスト職（2D/3DCG）、テクニカルアーティスト職", "rank": "B"},
     {"id": "bandainamco-studios", "name": "バンダイナムコスタジオ", "url": "https://www.bandainamcostudios.com/recruit/graduate/academy", "type": "コンシューマー大手", "location": "東京", "status": "冬インターン・ワークショップの受付は11/15まで", "next": "冬IS 12/5〜1/22、本選考は12/1前後と推定", "roles_note": "ビジュアルアーティスト（キャラ/背景/エフェクト/コンセプト/UI/映像）、アニメーター、TA（エンジニア）", "rank": "A"},
-    {"id": "sega", "name": "セガ", "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html", "type": "コンシューマー大手", "location": "東京", "status": "2028年新卒エントリー受付中", "next": "デザイナー1dayカレッジ 12/14（〆11/20）・1/14（〆12/17）", "roles_note": "デザイナー（3DCG等）、TA", "rank": "A"},
+    {"id": "sega", "name": "セガ", "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html", "type": "コンシューマー大手", "location": "東京", "status": "2028年新卒エントリー受付中", "next": "デザイナー1dayカレッジ 1/14（〆12/17）、ゲームプログラマ1dayカレッジ 1/22（〆12/14）", "roles_note": "デザイナー（3DCG等）、TA、プログラマ", "rank": "A"},
     {"id": "sega-fave", "name": "セガ フェイブ", "url": "https://www.sega.co.jp/recruit/fresh/internship/index.html", "type": "コンシューマー大手（セガグループ）", "location": "東京", "status": "セガカレッジでデザイナー向けイベントを掲載", "next": "日程はカレッジページで確認", "roles_note": "デザイナー（メダルゲーム＆プロダクト等）", "rank": "B"},
     {"id": "sega-sapporo", "name": "セガ札幌スタジオ", "url": "https://cgworld.jp/flashnews/2601-pfo3.html", "type": "セガグループ", "location": "札幌", "status": "クリ博ポートフォリオ選考会にセガグループとして参加", "next": "要確認", "roles_note": "—", "rank": "C"},
     {"id": "atlus", "name": "アトラス", "url": "https://www.atlus.co.jp/recruit/", "type": "コンシューマー大手（セガグループ）", "location": "東京", "status": "2028年度新卒の募集要項を10/1に公開", "next": "開発職の締切は要項で確認", "roles_note": "開発職", "rank": "A"},
@@ -61,7 +61,7 @@
     {"id": "dcg-entertainment", "name": "DCG Entertainment", "url": "https://cgworld.jp/flashnews/2608-pfo9.html", "type": "開発会社", "location": "—", "status": "クリ博（27卒9月）参加", "next": "要確認", "roles_note": "—", "rank": "C"},
     {"id": "adglobe", "name": "アドグローブ", "url": "https://cgworld.jp/flashnews/2608-pfo9.html", "type": "開発会社", "location": "—", "status": "クリ博（27卒9月）参加", "next": "要確認", "roles_note": "—", "rank": "C"},
     {"id": "irem-se", "name": "イレムソフトウェアエンジニアリング", "url": "https://cgworld.jp/flashnews/2608-pfo9.html", "type": "開発会社", "location": "—", "status": "クリ博（27卒9月）参加", "next": "要確認", "roles_note": "—", "rank": "C"},
-    {"id": "rasengle", "name": "ラセングル", "url": "https://news.mynavi.jp/article/20260629-4643213/", "type": "モバイル", "location": "東京", "status": "キャリアクエスト第4回出展、クリ博（27卒3月）参加", "next": "要確認", "roles_note": "—", "rank": "C"},
+    {"id": "rasengle", "name": "ラセングル", "url": "https://recruit.lasengle.co.jp/fresh2028/", "type": "モバイル", "location": "東京", "status": "2028年度新卒 2次受付中（〜11/30）", "next": "3次受付は確定次第案内", "roles_note": "デザイナー・エンジニア（ほかプランナー・総合職）", "rank": "C"},
     {"id": "chiffon", "name": "シフォン", "url": "https://news.mynavi.jp/article/20260629-4643213/", "type": "オンライン/モバイル", "location": "東京", "status": "キャリアクエスト第4回出展", "next": "要確認", "roles_note": "—", "rank": "C"},
     {"id": "cygames", "name": "Cygames", "url": "https://gamebiz.jp/news/431370", "type": "モバイル/コンシューマー", "location": "東京・大阪", "status": "28卒早期選考を10月から実施、2028年度募集要項公開", "next": "通常選考は2026年12月と推定、冬インターンは12月締切と推定", "roles_note": "デザイナー職（3DCG/UI/2Dアニメ/TA等）", "rank": "A"},
     {"id": "cyberagent", "name": "サイバーエージェント", "url": "https://www.cyberagent.co.jp/careers/news/detail/id=32655", "type": "モバイル", "location": "東京", "status": "クリエイターコースは通年で本選考受付", "next": "イベントはマイページで随時", "roles_note": "2Dアーティスト/デザイナー/3Dアーティスト（キャラモデ/背景/エフェクト/モーション）", "rank": "A"},
@@ -115,7 +115,8 @@
     {"id": "kcrop", "name": "京都府（KCROP）", "group": "合同"},
     {"id": "gff", "name": "GFF（福岡ゲーム産業振興機構）", "group": "合同"},
     {"id": "polyphony", "name": "ポリフォニー・デジタル"},
-    {"id": "bandainamco-amusement-lab", "name": "バンダイナムコアミューズメントラボ", "type": "受託開発（アミューズメント・BN系）", "location": "東京", "status": "マイナビ2028に掲載（インターン等）。デザイナー枠は要確認", "rank": "C"}
+    {"id": "bandainamco-amusement-lab", "name": "バンダイナムコアミューズメントラボ", "type": "受託開発（アミューズメント・BN系）", "location": "東京", "status": "マイナビ2028に掲載（インターン等）。デザイナー枠は要確認", "rank": "C"},
+    {"id": "4bidai", "name": "東京四美大 合同企業セミナー（東京造形・多摩美・武蔵美・女子美）", "group": "合同", "url": "https://www2.gakujo.ne.jp/4bidai/2027info/"}
   ],
 
   "events": [
@@ -252,7 +253,7 @@
       "note": "atlus-recruit.snar.jp／職種別の締切は要項で確認",
       "url": "https://www.atlus.co.jp/recruit/",
       "source": "https://www.atlus.co.jp/recruit/",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -335,14 +336,30 @@
       "category": "説明会",
       "title": "クリエイティブのしごと展2026就職（東京）",
       "kind": "event",
-      "start": "2026-11-01",
-      "end": "2026-11-30",
+      "start": "2026-11-28",
+      "end": "2026-11-29",
+      "time": "12:30",
       "roles": ["デザイン"],
-      "note": "推定時期：2026年11月（日付は公式で確認）／東京／公式は『November at Kyoto, Tokyo』と表記",
+      "note": "TODA HALL & CONFERENCE TOKYO HALL A／12:30〜17:30（最終入場16:30）／私服／ViViViTのポートフォリオ登録（ログイン）が必要／出展社一覧は公式ページに未掲載",
       "url": "https://www.vivivit.com/events/shigoto-ten",
       "source": "https://www.vivivit.com/events/shigoto-ten",
-      "checked_at": "2026-11-11",
-      "confidence": "要再確認"
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "rasengle-2nd",
+      "company": "rasengle",
+      "category": "本選考",
+      "title": "2028年度新卒 2次受付",
+      "kind": "span",
+      "start": "2026-10-05",
+      "end": "2026-11-30",
+      "roles": ["デザイン", "プログラマー"],
+      "note": "締切時刻の記載なし／デザイナー・エンジニアほか／3次受付は確定次第案内",
+      "url": "https://recruit.lasengle.co.jp/fresh2028/",
+      "source": "https://recruit.lasengle.co.jp/fresh2028/",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
     },
     {
       "id": "fromsoftware-ev014",
@@ -355,7 +372,7 @@
       "note": "WEB",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -385,7 +402,7 @@
       "roles": ["デザイン", "TA", "プログラマー"],
       "url": "https://www.bandainamcostudios.com/recruit/graduate/academy",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/academy",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -399,7 +416,7 @@
       "roles": ["デザイン", "TA", "プログラマー"],
       "url": "https://www.bandainamcostudios.com/recruit/graduate/academy",
       "source": "https://www.bandainamcostudios.com/recruit/graduate/academy",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -461,7 +478,7 @@
       "note": "オンライン 13:00〜17:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -476,7 +493,37 @@
       "note": "オンライン 13:00〜17:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "sega-pgm-4-apply",
+      "company": "sega",
+      "category": "インターン",
+      "title": "ゲームプログラマ1dayカレッジ 第4回（オンライン）（申込締切）",
+      "kind": "deadline",
+      "start": "2026-11-20",
+      "end": "2026-11-20",
+      "time": "10:00",
+      "roles": ["プログラマー"],
+      "url": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "source": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "sega-pgm-4",
+      "company": "sega",
+      "category": "インターン",
+      "title": "ゲームプログラマ1dayカレッジ 第4回（オンライン）",
+      "kind": "event",
+      "start": "2026-12-17",
+      "end": "2026-12-17",
+      "roles": ["プログラマー"],
+      "note": "オンライン（Zoom） 13:00〜18:00／クライアント・アプリケーション系",
+      "url": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "source": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -492,7 +539,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -507,7 +554,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -518,11 +565,12 @@
       "kind": "event",
       "start": "2026-11-26",
       "end": "2026-11-26",
+      "time": "15:00",
       "roles": ["プログラマー"],
       "note": "オンライン（Zoomウェビナー）15:00〜／申込は開催2営業日前の18時まで。参加は任意",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -622,11 +670,12 @@
       "kind": "event",
       "start": "2026-12-01",
       "end": "2026-12-01",
+      "time": "17:30",
       "roles": ["プログラマー"],
       "note": "オンライン（Zoomウェビナー）17:30〜／申込は開催2営業日前の18時まで。参加は任意",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -819,6 +868,181 @@
       "confidence": "確定"
     },
     {
+      "id": "nintendo-artwork-seminar-1-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第1回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-01",
+      "end": "2026-12-01",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 12/04 16:00〜17:15／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-1",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第1回",
+      "kind": "event",
+      "start": "2026-12-04",
+      "end": "2026-12-04",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:15／オンライン（カメラ・マイクオフ）／先着順・定員に達し次第締切／グラフィックデザイン・イラスト・3DCGモデリング／28卒以外も参加可",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-2-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第2回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-03",
+      "end": "2026-12-03",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 12/08 16:00〜17:15／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-2",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第2回",
+      "kind": "event",
+      "start": "2026-12-08",
+      "end": "2026-12-08",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:15／オンライン（カメラ・マイクオフ）／先着順・定員に達し次第締切／グラフィックデザイン・イラスト・3DCGモデリング／28卒以外も参加可",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-3-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第3回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-09",
+      "end": "2026-12-09",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 12/14 16:00〜17:15／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-3",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第3回",
+      "kind": "event",
+      "start": "2026-12-14",
+      "end": "2026-12-14",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:15／オンライン（カメラ・マイクオフ）／先着順・定員に達し次第締切／グラフィックデザイン・イラスト・3DCGモデリング／28卒以外も参加可",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-4-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第4回（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-15",
+      "end": "2026-12-15",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "開催 12/18 16:00〜17:15／先着順",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-artwork-seminar-4",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "デザイン系オンラインセミナー（アートワーク制作）第4回",
+      "kind": "event",
+      "start": "2026-12-18",
+      "end": "2026-12-18",
+      "time": "16:00",
+      "roles": ["デザイン"],
+      "note": "16:00〜17:15／オンライン（カメラ・マイクオフ）／先着順・定員に達し次第締切／グラフィックデザイン・イラスト・3DCGモデリング／28卒以外も参加可",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_online_artwork.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-gamedev-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "理工系 仕事紹介（ゲーム開発）申込締切",
+      "kind": "deadline",
+      "start": "2026-11-12",
+      "end": "2026-11-12",
+      "roles": ["プログラマー"],
+      "note": "受付終了／開催日 12/5・12/7・12/18・12/20・12/21（2027年4月〜2028年3月卒業予定者向け）",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/game_development.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/game_development.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-product-portfolio-apply",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "社員懇談会＆ポートフォリオ相談会（プロダクトデザイン）申込締切",
+      "kind": "deadline",
+      "start": "2026-11-30",
+      "end": "2026-11-30",
+      "time": "12:00",
+      "roles": ["デザイン"],
+      "note": "プレエントリー後、マイページからES・作品を提出／応募多数の場合はESと作品で選考（結果は12/11まで）",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_product.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_product.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
+      "id": "nintendo-product-portfolio",
+      "company": "nintendo",
+      "category": "説明会",
+      "title": "社員懇談会＆ポートフォリオ相談会（ハードウェア制作・プロダクトデザイン）",
+      "kind": "event",
+      "start": "2026-12-21",
+      "end": "2026-12-22",
+      "time": "12:30",
+      "roles": ["デザイン"],
+      "note": "12/21・12/22のどちらか1日（各12:30〜16:00、内容は同じ）／対面・本社開発棟（京都）／2028年3月末までに卒業見込みが対象",
+      "url": "https://www.nintendo.co.jp/jobs/recruit/event/design_product.html",
+      "source": "https://www.nintendo.co.jp/jobs/recruit/event/design_product.html",
+      "checked_at": "2026-11-17",
+      "confidence": "確定"
+    },
+    {
       "id": "hal-lab-ev041",
       "company": "hal-lab",
       "category": "説明会",
@@ -891,7 +1115,7 @@
       "note": "WEB",
       "url": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
       "source": "https://recruit.creatures.co.jp/new-graduate/job_and_entry/",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -954,7 +1178,7 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -969,7 +1193,38 @@
       "note": "対面 13:00〜18:30",
       "url": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
       "source": "https://www.sega.co.jp/recruit/fresh/internship/college_dsn02.html",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "sega-pgm-5-apply",
+      "company": "sega",
+      "category": "インターン",
+      "title": "ゲームプログラマ1dayカレッジ 第5回（リアル）（申込締切）",
+      "kind": "deadline",
+      "start": "2026-12-14",
+      "end": "2026-12-14",
+      "time": "10:00",
+      "roles": ["プログラマー"],
+      "note": "ゲーム作品の提出が必要／応募多数の場合は抽選の可能性あり",
+      "url": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "source": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
+    },
+    {
+      "id": "sega-pgm-5",
+      "company": "sega",
+      "category": "インターン",
+      "title": "ゲームプログラマ1dayカレッジ 第5回（リアル）",
+      "kind": "event",
+      "start": "2027-01-22",
+      "end": "2027-01-22",
+      "roles": ["プログラマー"],
+      "note": "対面（セガ本社） 13:00〜18:00",
+      "url": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "source": "https://www.sega.co.jp/recruit/fresh/internship/college_pgm01.html",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -1233,6 +1488,22 @@
       "source": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "checked_at": "2026-11-17",
       "confidence": "前年実績からの推測"
+    },
+    {
+      "id": "4bidai-seminar",
+      "company": "4bidai",
+      "category": "説明会",
+      "title": "東京四美大 合同企業セミナー",
+      "kind": "event",
+      "start": "2027-02-26",
+      "end": "2027-02-26",
+      "time": "13:00",
+      "roles": ["デザイン", "TA", "プログラマー"],
+      "note": "13:00〜16:00／女子美術大学 相模原キャンパス／対面・入退場自由・服装自由／四美大に在籍する2028〜2030年卒業予定者限定／約60社（ゲーム系：アトラス、インテリジェントシステムズ、f4samurai、カプコン、グッド・フィール、ゲームフリーク、コーエーテクモ、コナミ、コロプラ、サイバーエージェント、ドワンゴ、ニンテンドーキューブ、ハル研究所、バンダイナムコスタジオ、フロム・ソフトウェア、レベルファイブ、1-UPスタジオ、チームラボ ほか）",
+      "url": "https://www2.gakujo.ne.jp/4bidai/2027info/",
+      "source": "学内掲示ポスター（2026/11）",
+      "checked_at": "2026-11-23",
+      "confidence": "確定"
     },
     {
       "id": "mynavi-ev066",
@@ -1758,7 +2029,7 @@
       "note": "15:00開始／東京オフィス（西新宿）・対面のみ、交通費自己負担／提出したポートフォリオに開発者がコメント／応募多数の場合は作品選考あり（合否に関わらず連絡あり）",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "エントリー者向け案内メール（2026/11/13）。公式サイトINFORMATION 2026.11.13「ポートフォリオ相談会の応募受付を開始」",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
@@ -1774,7 +2045,7 @@
       "note": "受付開始 11/13 18:00／締切 11/29 23:59／応募多数の場合は作品選考あり",
       "url": "https://careers.fromsoftware.jp/jp/newgraduates.html",
       "source": "エントリー者向け案内メール（2026/11/13）。公式サイトINFORMATION 2026.11.13「ポートフォリオ相談会の応募受付を開始」",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-23",
       "confidence": "確定"
     },
     {
