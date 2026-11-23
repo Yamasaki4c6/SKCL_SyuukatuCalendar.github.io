@@ -3,6 +3,7 @@
   index.html：ページの骨組み（どこに何を置くか）だけを書いたファイルです。
   中身（会社名・日付など）は data/schedule.json から app.js が読み込んで描きます。
   日程の更新でこのファイルを触る必要はありません。
+  app.js・style.css を変えたときは、下の「?v=…」を変えてブラウザに古いファイルを使わせないようにします。
 -->
 <html lang="ja">
 <head>
@@ -10,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>28卒 ゲーム・CG就活カレンダー</title>
   <meta name="description" content="28卒（2028年3月卒）向け、ゲーム・CG業界のインターン・本選考の締切一覧">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2026-11-11b">
 </head>
 <body>
   <header class="site-header">
@@ -76,6 +77,6 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2026-11-11b"></script>
 </body>
 </html>
